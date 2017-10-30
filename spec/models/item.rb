@@ -4,9 +4,9 @@ describe Item do
 
   describe 'validations' do
 
-    it 'succeed with a name, description, price, image url, and category' do
+    it 'succeed with a title, description, price, image url, and category' do
       item = Item.new(
-        name: 'item name',
+        title: 'item title',
         description: 'item description',
         price: 9.99,
         image_url: 'example.com/item.jpg',
@@ -15,7 +15,7 @@ describe Item do
       expect(item).to be_valid
     end
 
-    it 'fail without a name' do
+    it 'fail without a title' do
       item = Item.new(
         description: 'item description',
         price: 9.99,
@@ -27,7 +27,7 @@ describe Item do
 
     it 'fail without a description' do
       item = Item.new(
-        name: 'item name',
+        title: 'item name',
         price: 9.99,
         image_url: 'example.com/item.jpg',
         category: create(:category)
@@ -37,7 +37,7 @@ describe Item do
 
     it 'fail without a price' do
       item = Item.new(
-        name: 'item name',
+        title: 'item name',
         description: 'item description',
         image_url: 'example.com/item.jpg',
         category: create(:category)
@@ -47,7 +47,7 @@ describe Item do
 
     it 'fail without an image url' do
       item = Item.new(
-        name: 'item name',
+        title: 'item name',
         description: 'item description',
         price: 9.99,
         category: create(:category)
@@ -57,7 +57,7 @@ describe Item do
 
     it 'fail without a category' do
       item = Item.new(
-        name: 'item name',
+        title: 'item name',
         description: 'item description',
         price: 9.99,
         image_url: 'example.com/item.jpg'
