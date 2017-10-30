@@ -1,2 +1,2 @@
-# little_shop_of_kittens
-We're making an Etsy store of tiny kittens. 
+# little_shop_of_tiny_animals
+We're making an Etsy store of tiny animals. 
