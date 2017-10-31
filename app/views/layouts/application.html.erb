@@ -12,6 +12,10 @@
     <header>
       <h1></h1>
     </header>
+    <%= render 'shared/navigation' %>
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, class: name %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
