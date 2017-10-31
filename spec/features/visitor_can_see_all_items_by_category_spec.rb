@@ -7,14 +7,14 @@ describe "when a visitor selects a category" do
     item1 = create(:item, category: category1)
     item2 = create(:item, category: category1)
     item3 = create(:item, category: category2)
-    visit category_path(category1)
+    visit category_items_path(category1.name)
 
-    expect(current_path).to eq("categories/#{category1.id}")
+    expect(current_path).to eq("/#{category1.name}")
     expect(page).to have_content("#{item1.title}")
     expect(page).to have_content("#{item2.title}")
     expect(page).to_not have_content("#{item3.title}")
-    expect(page).to have_content(item1.image_url)
-    expect(page).to have_content(item2.image_url)
-    expect(page).to_not have_content(item3.image_url)
+    expect(first("img")['alt']).to have_content "#{item1.title}"
+    expect(all("img")[1]['alt']).to have_content "#{item2.title}"
+    expect(all("img").count).to eq(2)
   end
 end

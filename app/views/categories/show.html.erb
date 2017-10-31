@@ -1,0 +1,6 @@
+<h1> All Items for <%= @category.name %> </h1>
+
+<% @category.items.each do |item| %>
+  <%= item.title %>
+  <%= image_tag(item.image_url, size: "100x100", alt: item.title) %>
+<% end %>
