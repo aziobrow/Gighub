@@ -2,5 +2,5 @@
 
 <% @items.each do |item| %>
   <%= item.title %>
-  <%= item.image_url %>
+  <%= image_tag(item.image_url, size: "100x100", alt: item.title) %>
 <% end %>
