@@ -74,11 +74,6 @@ describe Item do
       expect(@item.category).to be_a(Category)
     end
 
-    it 'many order items' do
-      @item.order_items << create(:order_item)
-      expect(@item.order_items.first).to be_a(OrderItem)
-    end
-
   end
 
 end
