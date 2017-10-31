@@ -6,7 +6,13 @@ Rails.application.routes.draw do
   controller :sessions do
     get '/login' => :new
     post '/login' => :create
+    post '/logout' => :destroy
   end
+
+  resources :users, only: [:new, :create]
+  get '/dashboard', to: 'users#show'
+
+  resources :users, only: [:new, :create]
 
   resources :items, only: [:index]
 
