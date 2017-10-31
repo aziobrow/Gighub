@@ -1,10 +1,9 @@
 FactoryBot.define do
   factory :item do
-    category
-    
     sequence(:title)  {|n| "Product #{n}"}
     sequence(:description)  {|n| "Description #{n}"}
     sequence(:price)  {|n| "Price: $#{n}"}
-    image_url { "http://placebear.com/#{rand(175..225)}/#{rand(275..325)}" }
+    image_url "http://placebear.com/50/100"
+    category
   end
 end
