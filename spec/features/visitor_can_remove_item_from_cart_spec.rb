@@ -3,8 +3,10 @@ require 'rails_helper'
 feature 'When a visitor with items in their cart views their cart and clicks "Remove"' do
 
   background do
-    deleted = create(:item, title: "DELETED_ITEM")
-    Cart.add_item(deleted.id)
+    item = create(:item)
+    visit items_path
+    click_on("Add to Cart")
+    find("#cart").click
     visit cart_path
     click_on "Remove"
   end

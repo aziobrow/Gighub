@@ -11,4 +11,12 @@ class CartsController < ApplicationController
   def show
     @items = @cart.cart_items
   end
+
+  def destroy
+    item = Item.find(params[:item_id])
+    @cart.remove_item(item.id)
+    session[:cart] = @cart.contents
+    flash[:success] = "You have successfully deleted #{item.title} from your cart."
+    redirect_back(fallback_location: root_path)
+  end
 end

@@ -13,6 +13,14 @@ class Cart
     contents[id.to_s] = (contents[id.to_s] || 0) + 1
   end
 
+  def remove_item(id)
+    if contents[id.to_s] == 0
+      delete(contents[id.to_s])
+    else
+      contents[id.to_s] - 1
+    end
+  end
+
   def count_of(id)
     contents[id.to_s] || 0
   end
