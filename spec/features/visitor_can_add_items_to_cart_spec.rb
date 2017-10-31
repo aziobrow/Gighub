@@ -5,7 +5,7 @@ describe "when a visitor adds an item to cart and visits cart" do
     item = create(:item)
     visit items_path
     click_on("Add to Cart")
-    click_on("#cart")
+    find("#cart a").click
   end
 
   it "they are on the cart show page" do

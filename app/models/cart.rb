@@ -17,4 +17,8 @@ class Cart
     contents[id.to_s] || 0
   end
 
+  def collect_items
+    contents.transform_keys {|key| Item.find(key.to_i)}
+  end
+
 end

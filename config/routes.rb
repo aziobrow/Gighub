@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :items, only: [:index]
 
-  resources :carts, only: [:create]
+  resource :cart, only: [:create, :show]
 
   get '/:category_name', to: 'categories#show', as: 'category_items'
 
