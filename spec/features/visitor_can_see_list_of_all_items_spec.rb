@@ -8,8 +8,9 @@ describe "when a visitor goes to the items index page" do
 
     expect(current_path).to eq('/items')
     expect(page).to have_content("#{item1.title}")
-    expect(page).to have_content(item1.image)
     expect(page).to have_content("#{item2.title}")
-    expect(page).to have_content(item2.image)
+    expect(first("img")['alt']).to have_content "#{item1.title}"
+    expect(all("img")[1]['alt']).to have_content "#{item2.title}"
+    expect(all("img").count).to eq(2)
   end
 end
