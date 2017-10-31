@@ -3,7 +3,7 @@ feature 'When a returning visitor tries to log in' do
   background do
     create(:user, username: 'JaneDoe89', password: 'pw')
     visit root_path
-    click_on '#login'
+    click_on 'Login'
     fill_in 'session[username]', with: 'JaneDoe89'
     fill_in 'session[password]', with: 'pw'
     click_on 'Create User'
