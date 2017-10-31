@@ -3,4 +3,5 @@
 <% @items.each do |item| %>
   <%= item.title %>
   <%= image_tag(item.image_url, size: "100x100", alt: item.title) %>
+  <%= button_to "Add to Cart", carts_path %>
 <% end %>
