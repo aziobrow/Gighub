@@ -2,10 +2,10 @@ require 'rails_helper'
 
 describe "when a visitor adds an item to cart and visits cart" do
   before do
-    item = create(:item)
+    item = create(:item, price: 2)
     visit items_path
     click_on("Add to Cart")
-    find("#cart a").click
+    find("#cart").click
   end
 
   it "they are on the cart show page" do
@@ -23,9 +23,12 @@ describe "when a visitor adds an item to cart and visits cart" do
     it "there is a total price for all items in the cart" do
       create_list(:item, 3, price: 2)
       visit items_path
-      all('add-to-cart').each &:click
+      all('.add-to-cart').each &:click
+      find("#cart").click
+      save_and_open_page
 
-      expect(page).to have_content("$6")
+
+      expect(page).to have_content("10")
     end
   end
 

@@ -17,8 +17,12 @@ class Cart
     contents[id.to_s] || 0
   end
 
-  def collect_items
+  def cart_items
     contents.transform_keys {|key| Item.find(key.to_i)}
+  end
+
+  def total_price
+    cart_items.sum  {|item, quantity| item.price * quantity}
   end
 
 end

@@ -2,7 +2,10 @@
 
 <% @items.each do |item, quantity| %>
   Item: <%= item.title %>
-  <%= item.description %>
-  <%= item.price %>
+  Quantity: <%= quantity %>
+  Description: <%= item.description %>
+  Price: <%= item.price %>
   <%= image_tag(item.image_url, size: "100x100", alt: item.title) %>
 <% end %>
+
+Subtotal Before Tax: <%= @cart.total_price %>

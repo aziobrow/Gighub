@@ -9,6 +9,6 @@ class CartsController < ApplicationController
   end
 
   def show
-    @items = @cart.collect_items
+    @items = @cart.cart_items
   end
 end
