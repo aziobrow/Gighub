@@ -3,4 +3,7 @@
 <% @items.each do |item| %>
   <%= item.title %>
   <%= image_tag(item.image_url, size: "100x100", alt: item.title) %>
+  <%= button_to "Add to Cart", cart_path(item_id: item.id), class: 'add-to-cart' %>
 <% end %>
+
+<%= link_to 'Cart', cart_path, id: 'cart' %>
