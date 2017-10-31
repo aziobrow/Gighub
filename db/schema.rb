@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171030231517) do
+ActiveRecord::Schema.define(version: 20171031154100) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,9 @@ ActiveRecord::Schema.define(version: 20171030231517) do
     t.string "image_url", null: false
     t.integer "price", null: false
     t.text "description", null: false
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_items_on_category_id"
   end
 
+  add_foreign_key "items", "categories"
 end
