@@ -1,0 +1,34 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">GigHub</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li> <%= link_to "All", items_path %> </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Shop By Category <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "Category 1", items_path %></li>
+            <li role="separator" class="divider"></li>
+            <li><%= link_to "Category 2", items_path %></li>
+            <li role="separator" class="divider"></li>
+            <li><%= link_to "Category 3", items_path %></li>
+          </ul>
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <%= link_to items_path, type: "button", class: "btn btn-lg" do %>
+          <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true">
+          </span>
+        <% end %>
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
