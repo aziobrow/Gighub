@@ -1,5 +1,7 @@
 FactoryBot.define do
   factory :item do
+    category
+    
     sequence(:title)  {|n| "Product #{n}"}
     sequence(:description)  {|n| "Description #{n}"}
     sequence(:price)  {|n| "Price: $#{n}"}
