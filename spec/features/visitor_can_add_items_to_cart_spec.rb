@@ -25,8 +25,6 @@ describe "when a visitor adds an item to cart and visits cart" do
       visit items_path
       all('.add-to-cart').each &:click
       find("#cart").click
-      save_and_open_page
-
 
       expect(page).to have_content("10")
     end
