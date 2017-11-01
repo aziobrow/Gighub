@@ -1,15 +1,21 @@
 <h2>Log In</h2>
+<br />
+<form>
+  <%= form_for :session, url: login_path do |f| %>
+    <div class="form-group">
+      <%= f.label :username %><br />
+      <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+      <%= f.text_field :username, placeholder: "username" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :password %><br />
+      <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+      <%= f.password_field :password, placeholder: "password" %>
+    </div>
+    <%= f.submit 'Login', type: "button", class: "btn btn-success" %>
+    <br />
+    <br />
+    <p>Not registered? <%= link_to 'Create Account', new_user_path %></p>
 
-<%= form_for :session, url: login_path do |f| %>
-
-  <%= f.label :username %>
-  <%= f.text_field :username %>
-
-  <%= f.label :password %>
-  <%= f.text_field :password %>
-
-  <%= f.submit 'Login' %>
-
-  <p>Not registered?<%= link_to 'Create Account', new_user_path %></p>
-
-<% end %>
+  <% end %>
+</form>
