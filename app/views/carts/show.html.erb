@@ -1,11 +1,12 @@
 <h2> Your Cart </h2>
 
-<% @items.each do |item, quantity| %>
+<div class='cart-items'><% @items.each do |item, quantity| %>
   Item: <%= item.title %>
   Quantity: <%= quantity %>
   Description: <%= item.description %>
   Price: <%= item.price %>
   <%= image_tag(item.image_url, size: "100x100", alt: item.title) %>
-<% end %>
+  <%= link_to "Remove", cart_path(item_id: item.id), method: :delete %>
+<% end %></div>
 
 Subtotal Before Tax: <%= @cart.total_price %>

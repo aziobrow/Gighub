@@ -7,9 +7,9 @@ describe "when a visitor selects a category" do
     item1 = create(:item, category: category1)
     item2 = create(:item, category: category1)
     item3 = create(:item, category: category2)
-    visit category_items_path(category1.name)
+    visit category_items_path(category1.slug)
 
-    expect(current_path).to eq("/#{category1.name}")
+    expect(current_path).to eq("/#{category1.slug}")
     expect(page).to have_content("#{item1.title}")
     expect(page).to have_content("#{item2.title}")
     expect(page).to_not have_content("#{item3.title}")

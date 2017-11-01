@@ -10,12 +10,14 @@
 
   <body>
     <header>
-      <h1></h1>
+      <h1>Gighub</h1>
     </header>
-    <%= render 'shared/navigation' %>
+    <%= render 'navigation' %>
     <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, class: name %>
+      <%= content_tag :div, msg.html_safe, class: name %>
     <% end %>
-    <%= yield %>
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>
