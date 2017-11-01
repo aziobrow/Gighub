@@ -10,8 +10,6 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       flash[:success] = "Logged in as #{user.username}"
       redirect_to dashboard_path
-    else
-      raise 'hell'
     end
   end
 
