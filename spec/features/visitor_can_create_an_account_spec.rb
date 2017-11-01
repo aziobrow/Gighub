@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 feature 'When a visitor visits the login page and clicks "Create Account"' do
 
   background do
@@ -6,7 +8,7 @@ feature 'When a visitor visits the login page and clicks "Create Account"' do
     fill_in 'user[username]', with: 'JaneDoe89'
     fill_in 'user[email]', with: 'janedoe89@example.com'
     fill_in 'user[password]', with: 'pw'
-    fill_in 'user[confirm_password]', with: 'pw'
+    fill_in 'user[password_confirmation]', with: 'pw'
     click_on 'Create User'
   end
 
@@ -15,7 +17,7 @@ feature 'When a visitor visits the login page and clicks "Create Account"' do
   end
 
   scenario 'they see a success message' do
-    expect('.success').to have_content('Logged in as JaneDoe89')
+    expect(find('.success')).to have_content('Logged in as JaneDoe89')
   end
 
   scenario 'they see their profile info' do

@@ -1,12 +1,14 @@
+require 'rails_helper'
+
 feature 'When a returning visitor tries to log in' do
 
   background do
-    create(:user, username: 'JaneDoe89', password: 'pw')
+    create(:user, username: 'JaneDoe89', password: 'pw', email: 'janedoe89@example.com')
     visit root_path
     click_on 'Login'
     fill_in 'session[username]', with: 'JaneDoe89'
     fill_in 'session[password]', with: 'pw'
-    click_on 'Create User'
+    find('form').click_on('Login')
   end
 
   scenario 'they are taken to the user dashboard' do
@@ -14,7 +16,7 @@ feature 'When a returning visitor tries to log in' do
   end
 
   scenario 'they see a success message' do
-    expect('.success').to have_content('Logged in as JaneDoe89')
+    expect(find('.success')).to have_content('Logged in as JaneDoe89')
   end
 
   scenario 'they see their profile info' do
