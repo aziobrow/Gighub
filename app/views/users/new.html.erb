@@ -1,25 +1,33 @@
 <h2>Create an Account</h2>
+<br />
+<form>
+    <%= form_for @user do |f| %>
+    <div class="form-group">
+      <%= f.label :username %><br />
+      <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+      <%= f.text_field :username, placeholder: "username" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :password %><br />
+      <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+      <%= f.password_field :password, placeholder: "password" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :password_confirmation, "Confirm password" %><br />
+      <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+      <%= f.password_field :password_confirmation, placeholder: "password" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :email %><br />
+      <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+      <%= f.email_field :email, placeholder: "email address" %>
+    </div>
+    <br />
+    <%= f.submit 'Create Account', type: "button", class: "btn btn-success" %>
+    <br />
+    <br />
+    <p>Already have an account? <%= link_to 'Login', login_path %></p>
 
-<%= form_for @user do |f| %>
-
-  <%= f.label :username %>
-  <%= f.text_field :username %>
-
-  <%= f.label :password %>
-  <%= f.text_field :password %>
-
-  <%= f.label :password_confirmation, "Confirm password" %>
-  <%= f.text_field :password_confirmation %>
-
-  <%= f.label :email %>
-  <%= f.email_field :email %>
-
-  <%= f.submit %>
-
-  <p>Already have an account?<%= link_to 'Login', login_path %></p>
-
-
-
-  <%= f.submit 'Create Account' %>
-
-<% end %>
+    <% end %>
+  </div>
+</form>
