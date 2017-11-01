@@ -27,6 +27,11 @@
           <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true">
           </span>
         <% end %>
+        <% if logged_in? %>
+          <%= link_to 'Logout', logout_path %>
+        <% else %>
+          <%= link_to 'Login', login_path %>
+        <% end %>
       </ul>
 
     </div><!-- /.navbar-collapse -->
