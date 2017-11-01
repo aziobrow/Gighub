@@ -17,6 +17,6 @@ class CartsController < ApplicationController
     @cart.remove_item(item.id)
     session[:cart] = @cart.contents
     flash[:success] = %Q[Successfully removed #{view_context.link_to "#{item.title}", "#{item_path(item)}"} from your cart.]
-    redirect_back(fallback_location: root_path)
+    redirect_back(fallback_location: cart_path)
   end
 end
