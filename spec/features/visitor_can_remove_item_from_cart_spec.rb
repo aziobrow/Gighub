@@ -7,7 +7,6 @@ feature 'When a visitor with items in their cart views their cart and clicks "Re
     visit items_path
     click_on("Add to Cart")
     find("#cart").click
-    visit cart_path
     click_on "Remove"
   end
 
