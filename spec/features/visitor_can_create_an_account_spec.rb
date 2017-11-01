@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'When a visitor visits the login page and clicks "Create Account"' do
+feature 'When a visitor submits the form to create a new account' do
 
   background do
     visit login_path
@@ -26,11 +26,11 @@ feature 'When a visitor visits the login page and clicks "Create Account"' do
   end
 
   scenario 'they do not see a "Login" button' do
-    expect(page).to_not have_link("Login")
+    expect(find('nav')).to_not have_link("Login")
   end
 
   scenario 'they see a "Logout" button' do
-    expect(page).to have_link("Logout", href: logout_path)
+    expect(find('nav')).to have_button("Logout")
   end
 
 end
