@@ -3,9 +3,10 @@ require 'rails_helper'
 feature 'When a visitor with items in their cart views their cart and clicks "Remove"' do
 
   background do
-    deleted = create(:item, title: "DELETED_ITEM")
-    Cart.add_item(deleted.id)
-    visit cart_path
+    item = create(:item)
+    visit items_path
+    click_on("Add to Cart")
+    find("#cart").click
     click_on "Remove"
   end
 
@@ -14,15 +15,15 @@ feature 'When a visitor with items in their cart views their cart and clicks "Re
   end
 
   it 'they see a success message' do
-    expect(find('.success')).to have_content('Successfully removed DELETED_ITEM from your cart.')
+    expect(find('.success')).to have_content("Successfully removed #{Item.first.title} from your cart.")
   end
 
   it 'the title in the success message should be a link to that item' do
-    expect(find('.success')).to have_link('DELETED_ITEM', href: item_path(Item.first))
+    expect(find('.success')).to have_link("#{Item.first.title}", href: item_path(Item.first))
   end
 
   it 'they no longer see the item listed' do
-    expect(find('#cart-items')).to_not have_content('DELETED_ITEM')
+    expect(find('.cart-items')).to_not have_content(Item.first.title)
   end
 
 end

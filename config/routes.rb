@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root "single_pages#index"
 
   root 'items#index'
 
@@ -14,9 +15,9 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create]
 
-  resources :items, only: [:index]
+  resources :items, only: [:index, :show]
 
-  resource :cart, only: [:create, :show]
+  resource :cart, only: [:create, :show, :destroy]
 
   get '/:slug', to: 'categories#show', as: 'category_items'
 
