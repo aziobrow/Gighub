@@ -8,7 +8,7 @@ feature 'When a logged-in user tries to log out' do
     find('nav').click_on('Login')
     fill_in 'session[username]', with: 'JaneDoe89'
     fill_in 'session[password]', with: 'pw'
-    find('form').click_on('Login')
+    click_button('Login')
     visit items_path
     click_on('Logout')
   end

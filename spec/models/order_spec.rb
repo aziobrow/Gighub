@@ -65,7 +65,7 @@ describe Order do
 
   describe 'instance methods' do
     it '#total_cost returns the total cost as a float' do
-      order = create(:order_item, cost: 199, quantity: 2).order
+      order = create(:order_item, unit_cost: 199, quantity: 2).order
       expect(order.total_cost).to eq(3.98)
     end
   end

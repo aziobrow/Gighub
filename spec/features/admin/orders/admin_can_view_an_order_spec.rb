@@ -38,9 +38,9 @@ feature 'When an admin visits an order page' do
       expect(page).to have_link(Item.last.title, href: item_path(Item.last))
     end
 
-    scenario 'they see the price' do
-      expect(page).to have_content(Item.first.price)
-      expect(page).to have_content(Item.last.price)
+    scenario 'they see the unit price' do
+      expect(page).to have_content(OrderItem.first.unit_cost)
+      expect(page).to have_content(OrderItem.last.unit_cost)
     end
 
     scenario 'they see the quantity' do

@@ -9,7 +9,11 @@ class Admin::OrdersController < ApplicationController
 private
 
   def require_admin
-    raise 'hell' unless current_user.admin?
+    not_found unless current_user.admin?
+  end
+
+  def not_found
+    raise ActionController::RoutingError.new('Not Found')
   end
 
 end

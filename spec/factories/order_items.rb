@@ -3,7 +3,7 @@ FactoryBot.define do
 
     order
     item
-    sequence(:cost) { |n| n }
+    sequence(:unit_cost) { |n| n }
     sequence(:quantity) { |n| n }
 
   end
