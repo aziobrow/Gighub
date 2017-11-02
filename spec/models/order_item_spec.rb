@@ -66,4 +66,11 @@ describe OrderItem do
 
   end
 
+  describe 'instance methods' do
+    it '#subtotal returns the cost * quantity as a float' do
+      order_item = create(:order_item, cost: 199, quantity: 2)
+      expect(order_item.subtotal).to eq(3.98)
+    end
+  end
+
 end

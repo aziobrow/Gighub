@@ -5,4 +5,8 @@ class OrderItem < ApplicationRecord
   belongs_to :order
   belongs_to :item
 
+  def subtotal
+    cost * quantity / 100.0
+  end
+
 end
