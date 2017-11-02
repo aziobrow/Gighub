@@ -10,10 +10,8 @@ feature 'When an default user visits an admin page' do
 
   describe 'for an order' do
     scenario 'they get the 404 page' do
-      skip
-      visit admin_order_path(create(:order))
-      expect(page).to have_status 404
-      expect(page).to have_content('not found')
+      expect{ visit admin_order_path(create(:order)) }
+      .to raise_error(ActionController::RoutingError)
     end
   end
 
