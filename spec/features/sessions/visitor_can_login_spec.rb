@@ -9,7 +9,6 @@ feature 'When a returning visitor tries to log in' do
     fill_in 'session[username]', with: 'JaneDoe89'
     fill_in 'session[password]', with: 'pw'
     click_button('Login')
-    save_and_open_page
   end
 
   scenario 'they are taken to the user dashboard' do
