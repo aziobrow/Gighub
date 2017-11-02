@@ -5,7 +5,7 @@ class CreateOrderItems < ActiveRecord::Migration[5.1]
       t.references :order, index: true, foreign_key: true
       t.references :item, index: true, foreign_key: true
 
-      t.integer :cost, null: false
+      t.integer :unit_cost, null: false
       t.integer :quantity, null: false
 
     end
