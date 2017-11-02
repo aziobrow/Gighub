@@ -5,7 +5,7 @@ describe "when a visitor adds an item to cart and visits cart" do
     item = create(:item, price: 2)
     visit items_path
     click_on("Add to Cart")
-    find("#cart").click
+    find("#go-to-cart").click
   end
 
   it "they are on the cart show page" do
@@ -24,7 +24,7 @@ describe "when a visitor adds an item to cart and visits cart" do
       create_list(:item, 3, price: 2)
       visit items_path
       all('.add-to-cart').each &:click
-      find("#cart").click
+      find("#go-to-cart").click
 
       expect(page).to have_content("10")
     end
