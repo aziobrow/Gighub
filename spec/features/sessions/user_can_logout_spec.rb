@@ -18,7 +18,7 @@ feature 'When a logged-in user tries to log out' do
   end
 
   scenario 'they see a success message' do
-    expect(find('.success')).to have_content('Successfully logged out')
+    expect(find('.alert-success')).to have_content('Successfully logged out')
   end
 
   scenario 'they see a "Login" button' do

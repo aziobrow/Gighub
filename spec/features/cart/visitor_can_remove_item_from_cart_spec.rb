@@ -15,11 +15,11 @@ feature 'When a visitor with items in their cart views their cart and clicks "Re
   end
 
   it 'they see a success message' do
-    expect(find('.success')).to have_content("Successfully removed #{Item.first.title} from your cart.")
+    expect(find('.alert-success')).to have_content("Successfully removed #{Item.first.title} from your cart.")
   end
 
   it 'the title in the success message should be a link to that item' do
-    expect(find('.success')).to have_link("#{Item.first.title}", href: item_path(Item.first))
+    expect(find('.alert-success')).to have_link("#{Item.first.title}", href: item_path(Item.first))
   end
 
   it 'they no longer see the item listed' do
