@@ -7,7 +7,7 @@ describe "when a visitor has an item in the cart" do
     first("input.add-to-cart").click
     first("input.add-to-cart").click
     first("input.add-to-cart").click
-    find("#cart").click
+    find("#go-to-cart").click
   end
 
   it "they can see the current quantity of an item" do
@@ -36,7 +36,7 @@ describe "when a visitor has an item in the cart" do
     item = create(:item, price: 5)
     visit items_path
     page.all("input.add-to-cart")[1].click
-    find("#cart").click
+    find("#go-to-cart").click
 
     expect(page).to have_content("Total Before Tax: $7")
   end
