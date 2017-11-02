@@ -1,87 +1,83 @@
 require 'rails_helper'
 
 describe Cart do
+  subject { Cart.new({"1" => 2, "2" => 3, "3" => 4}) }
+
+  before do
+    @item1 = Item.create!(
+              title: 'item title',
+              description: 'item description',
+              price: 10,
+              image_url: 'example.com/item.jpg',
+              category: create(:category),
+              id: 1)
+
+     @item2 = Item.create!(
+              title: 'item title',
+              description: 'item description',
+              price: 10,
+              image_url: 'example.com/item.jpg',
+              category: create(:category),
+              id: 2)
+
+    @item3 = Item.create!(
+             title: 'item title',
+             description: 'item description',
+             price: 10,
+             image_url: 'example.com/item.jpg',
+             category: create(:category),
+             id: 3)
+  end
+
   describe '.contents' do
     it 'stores contents in a hash' do
-
-    end
-
-    it 'can have no contents' do
-
-    end
-
-    it 'can have several contents' do
-
+      expect(subject.contents).to eq({"1" => 2, "2" => 3, "3" => 4})
     end
   end
 
   describe '.total_count' do
     it 'can find the total count of cart contents' do
-
+      expect(subject.total_count).to eq(9)
     end
   end
 
   describe '.add_item' do
     it 'can add a new item to contents' do
+      subject.add_item("4")
 
+      expect(subject.contents).to eq({"1" => 2, "2" => 3, "3" => 4, "4" => 1})
+    end
+
+    it 'can add another of the same item to contents' do
+      subject.add_item("1")
+
+      expect(subject.contents).to eq({"1" => 3, "2" => 3, "3" => 4})
     end
   end
 
   describe '.remove_item' do
     it 'can remove an item from contents' do
+      subject.remove_item("2")
 
+      expect(subject.contents).to eq({"1" => 2, "2" => 2, "3" => 4})
     end
   end
 
   describe '.count_of' do
-    it 'can count the number of a single item (by id) in the cart' do
-
+    it 'can count the number of a single item in the cart' do
+      expect(subject.count_of("3")).to eq(4)
     end
   end
 
   describe '.cart_items' do
     it 'can format cart items as strings' do
-
+      expect(subject.cart_items).to eq({@item1 => 2, @item2 => 3, @item3 => 4})
     end
   end
 
   describe '.total_price' do
     it 'can find the total price of contents' do
-
+      expect(subject.total_price).to eq(90.00)
     end
   end
-
 end
-
-  # attr_reader :contents
-  #
-  # def initialize(initial_contents)
-  #   @contents = initial_contents || {}
-  # end
-  #
-  # def total_count
-  #   contents.values.sum
-  # end
-  #
-  # def add_item(id)
-  #   contents[id.to_s] = (contents[id.to_s] || 0) + 1
-  # end
-  #
-  # def remove_item(id)
-  #   contents[id.to_s] -= 1
-  #   if contents[id.to_s] == 0
-  #     contents.delete(id.to_s)
-  #   end
-  # end
-  #
-  # def count_of(id)
-  #   contents[id.to_s] || 0
-  # end
-  #
-  # def cart_items
-  #   contents.transform_keys {|key| Item.find(key.to_i)}
-  # end
-  #
-  # def total_price
-  #   cart_items.sum  {|item, quantity| item.price * quantity}
-  # end
