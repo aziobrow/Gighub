@@ -9,7 +9,7 @@ class Admin::OrdersController < ApplicationController
 private
 
   def require_admin
-    raise 'hell' unless current_user.admin?
+    raise ActionController::RoutingError unless current_user.admin?
   end
 
 end
