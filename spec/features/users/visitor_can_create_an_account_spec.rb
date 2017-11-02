@@ -9,7 +9,7 @@ feature 'When a visitor submits the form to create a new account' do
     fill_in 'user[email]', with: 'janedoe89@example.com'
     fill_in 'user[password]', with: 'pw'
     fill_in 'user[password_confirmation]', with: 'pw'
-    click_on 'Create User'
+    click_on "Create Account"
   end
 
   scenario 'they are taken to the user dashboard' do
