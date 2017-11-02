@@ -17,7 +17,11 @@ Rails.application.routes.draw do
 
   resources :items, only: [:index, :show]
 
-  resource :cart, only: [:create, :show, :destroy]
+  resource :cart, only: [:create, :show, :destroy, :update]
+
+  namespace :admin do
+    resources :orders, only: [:show]
+  end
 
   get '/:slug', to: 'categories#show', as: 'category_items'
 

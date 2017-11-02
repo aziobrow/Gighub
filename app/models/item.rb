@@ -4,4 +4,8 @@ class Item < ApplicationRecord
 
   belongs_to :category
 
+  def subtotal_price(quantity)
+    self.price * quantity
+  end
+
 end

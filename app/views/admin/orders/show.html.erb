@@ -1,0 +1,12 @@
+<h2>Order Details</h2>
+
+<p>Purchaser: <%= @order.purchaser_name %></p>
+<p>Service Adress: <%= @order.service_address %></p>
+<p>Time: <%= @order.created_at %></p>
+<p>Status: <%= @order.status %></p>
+
+<ul>
+  <h3>Items:</h3>
+  <%= render @order.order_items %>
+  <b>Total Cost: <%= @order.total_cost %></b>
+</ul>
