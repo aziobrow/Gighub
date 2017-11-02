@@ -47,7 +47,6 @@ describe User do
       create(:user, email: 'janedoe89@example.com')
       user = User.new(
         username: 'JaneDoe89',
-        username: 'JaneDoe89',
         email: 'janedoe89@example.com',
         password: 'password',
         password_confirmation: 'password'
