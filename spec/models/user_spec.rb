@@ -76,7 +76,7 @@ describe User do
 
   describe 'defaults' do
     it 'role to "default"' do
-      expect(User.new.default?).to be true
+      expect(User.new.default?).to be(true)
     end
   end
 
@@ -85,7 +85,7 @@ describe User do
 
     it 'many orders' do
       user = create(:order).user
-      expect(user.orders.first).to be_a Order
+      expect(user.orders.first).to be_a(Order)
     end
 
   end
