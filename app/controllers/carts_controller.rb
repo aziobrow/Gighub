@@ -12,6 +12,12 @@ class CartsController < ApplicationController
     @items = @cart.cart_items
   end
 
+  def update
+    item = Item.find(params[:item_id])
+    @cart.update_quantity(item.id, params[:quantity].to_i)
+    redirect_back(fallback_location: cart_path)
+  end
+
   def destroy
     item = Item.find(params[:item_id])
     @cart.remove_item(item.id)

@@ -32,4 +32,9 @@ class Cart
     cart_items.sum  {|item, quantity| item.price * quantity}
   end
 
+  def update_quantity(id, new_quantity)
+    contents[id.to_s] = new_quantity
+  end
+
+
 end
