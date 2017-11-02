@@ -5,10 +5,10 @@ feature 'When a returning visitor tries to log in' do
   background do
     create(:user, username: 'JaneDoe89', password: 'pw', email: 'janedoe89@example.com')
     visit root_path
-    click_on 'Login'
+    find('nav').click_link('Login')
     fill_in 'session[username]', with: 'JaneDoe89'
     fill_in 'session[password]', with: 'pw'
-    find('form').click_on('Login')
+    click_button('Login')
   end
 
   scenario 'they are taken to the user dashboard' do

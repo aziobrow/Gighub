@@ -4,4 +4,6 @@
   <%= render @items %>
 </ul>
 
-<%= link_to 'Cart', cart_path, id: 'cart' %>
+<div class="cart-button">
+  <%= link_to 'Cart', cart_path, id: 'cart', type: "button", class: "btn btn-primary" %>
+</div>
