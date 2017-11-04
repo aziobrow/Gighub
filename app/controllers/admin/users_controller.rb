@@ -3,7 +3,7 @@ class Admin::UsersController < ApplicationController
   before_action :require_login, :require_admin
 
   def show
-    @admin_user = User.find(params[:id])
+    # @admin_user = User.find(params[:id])
   end
 
 private
