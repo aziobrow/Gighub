@@ -21,5 +21,6 @@ Rails.application.routes.draw do
   end
 
   get '/:slug', to: 'categories#show', as: 'category_items'
+  get '/admin/dashboard', to: 'admin#show'
 
 end
