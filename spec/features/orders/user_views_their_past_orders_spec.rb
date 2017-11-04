@@ -53,15 +53,17 @@ feature 'The past orders page' do
       end
 
       scenario('displays the date/time completed if completed') do
-        @current_user.orders.update status: :completed, updated_at: 2.days.ago
+        time = 2.days.ago
+        @current_user.orders.update status: :completed, updated_at: time
         visit orders_path
-        expect(page).to have_content("Completed: #{2.days.ago}")
+        expect(page).to have_content("Completed: #{time}")
       end
 
       scenario('displays the date/time cancelled if cancelled') do
-        @current_user.orders.update status: :cancelled, updated_at: 2.days.ago
+        time = 2.days.ago
+        @current_user.orders.update status: :cancelled, updated_at: time
         visit orders_path
-        expect(page).to have_content("Cancelled: #{2.days.ago}")
+        expect(page).to have_content("Cancelled: #{time}")
       end
 
     end
