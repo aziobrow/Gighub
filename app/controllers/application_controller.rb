@@ -12,4 +12,12 @@ class ApplicationController < ActionController::Base
     redirect_to login_path unless logged_in?
   end
 
+  def require_admin
+    not_found unless admin_logged_in?
+  end
+
+  def not_found
+    raise ActionController::RoutingError.new('Not Found')
+  end
+
 end
