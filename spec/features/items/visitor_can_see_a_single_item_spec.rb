@@ -1,13 +1,13 @@
 require 'rails_helper'
 
 feature "when a visitor goes to the item show page"do
-  before do
-    item = create(:item)
+  let :item { create(:item) }
+  before(:example) do
     visit item_path(item)
   end
 
   scenario "they are on the item's show page" do
-    expect(current_path).to eq("/item/#{item.id}")
+    expect(current_path).to eq("/items/#{item.id}")
   end
 
   scenario "they see an image of the item" do
@@ -19,7 +19,7 @@ feature "when a visitor goes to the item show page"do
   end
 
   scenario "they see the price of the item" do
-    expect(page).to have_content("#{item.price}")
+    expect(page).to have_content("$#{item.price}")
   end
 
   scenario "they see the item's description" do
