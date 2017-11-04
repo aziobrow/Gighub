@@ -19,6 +19,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    redirect_to admin_dashboard_path if admin_logged_in?
   end
 
 private

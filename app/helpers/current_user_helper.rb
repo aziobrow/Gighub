@@ -8,4 +8,8 @@ module CurrentUserHelper
     !!current_user
   end
 
+  def admin_logged_in?
+    logged_in? && current_user.admin?
+  end
+
 end
