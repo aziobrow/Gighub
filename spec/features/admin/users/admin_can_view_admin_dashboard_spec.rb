@@ -19,11 +19,11 @@ feature 'When I visit /admin/dashboard' do
     user = create(:user, username: 'JaneDoe89', password: 'pw', email: 'janedoe89@example.com')
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    expect{ admin_dashboard_path }.to raise_error(ActionController::RoutingError)
+    expect{ visit '/admin/dashboard' }.to raise_error(ActionController::RoutingError)
   end
 
   scenario 'as a visitor, they get a 404' do
-    expect{ admin_dashboard_path }.to raise_error(ActionController::RoutingError)
+    expect{ visit '/admin/dashboard' }.to raise_error(ActionController::RoutingError)
   end
 
 end

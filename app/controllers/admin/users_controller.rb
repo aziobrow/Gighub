@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
 
-  before_action :require_login, :require_admin
+  before_action :require_admin
 
   def show
     # @admin_user = User.find(params[:id])
@@ -9,7 +9,7 @@ class Admin::UsersController < ApplicationController
 private
 
   def require_admin
-    not_found unless current_user.admin?
+    not_found unless logged_in? && current_user.admin?
   end
 
   def not_found
