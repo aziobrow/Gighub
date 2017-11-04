@@ -9,4 +9,12 @@ class Item < ApplicationRecord
     self.price * quantity
   end
 
+  def retired?
+    !active?
+  end
+
+  def retire
+    update(active: false)
+  end
+
 end
