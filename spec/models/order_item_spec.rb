@@ -4,12 +4,11 @@ describe OrderItem do
 
   describe 'validations' do
 
-    it 'pass with an order, item, quantity, and unit_cost' do
+    it 'pass with an order, item, and quantity' do
       order_item = OrderItem.new(
         order: create(:order),
         item: create(:item),
         quantity: 1,
-        unit_cost: 1
       )
       expect(order_item).to be_valid
     end
@@ -18,7 +17,6 @@ describe OrderItem do
       order_item = OrderItem.new(
         item: create(:item),
         quantity: 1,
-        unit_cost: 1
       )
       expect(order_item).to_not be_valid
     end
@@ -27,7 +25,6 @@ describe OrderItem do
       order_item = OrderItem.new(
         order: create(:order),
         quantity: 1,
-        unit_cost: 1
       )
       expect(order_item).to_not be_valid
     end
@@ -36,20 +33,17 @@ describe OrderItem do
       order_item = OrderItem.new(
         order: create(:order),
         item: create(:item),
-        unit_cost: 1
       )
       expect(order_item).to_not be_valid
     end
 
-    it 'fail without a unit_cost' do
-      order_item = OrderItem.new(
-        order: create(:order),
-        item: create(:item),
-        quantity: 1
-      )
-      expect(order_item).to_not be_valid
-    end
+  end
 
+  describe 'defaults' do
+    it 'unit_cost to the item\'s price' do
+      order_item = create(:order_item)
+      expect(order_item.unit_cost).to eq(order_item.item.price)
+    end
   end
 
   describe 'is associated with' do
@@ -67,9 +61,9 @@ describe OrderItem do
   end
 
   describe 'instance methods' do
-    it '#subtotal returns the unit_cost * quantity as a float' do
+    it '#subtotal returns the unit_cost * quantity in cents' do
       order_item = create(:order_item, unit_cost: 199, quantity: 2)
-      expect(order_item.subtotal).to eq(3.98)
+      expect(order_item.subtotal).to eq(398)
     end
   end
 
