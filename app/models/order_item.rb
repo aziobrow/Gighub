@@ -4,9 +4,16 @@ class OrderItem < ApplicationRecord
 
   belongs_to :order
   belongs_to :item
+  before_validation :save_unit_cost
 
   def subtotal
-    unit_cost * quantity / 100.0
+    unit_cost * quantity
+  end
+
+private
+
+  def save_unit_cost
+    self.unit_cost ||= item && item.price
   end
 
 end
