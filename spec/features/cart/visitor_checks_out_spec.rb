@@ -29,7 +29,14 @@ describe "a visitor visits their cart" do
       expect(page).to have_content("Checkout")
     end
 
-    xit "they see all of the data that was there before logging in" do
+    it "they see all of the data that was there before logging in" do
+      user = create(:user)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+      visit cart_path
 
+      expect(page).to have_content(Item.first.title)
+      expect(page).to have_content(Item.first.price)
+      expect(page).to have_content(Item.first.description)
+      expect(first("img")['alt']).to have_content(Item.first.title)
     end
 end
