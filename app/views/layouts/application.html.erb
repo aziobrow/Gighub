@@ -13,8 +13,8 @@
       <h1>Gighub</h1>
     </header>
     <%= render 'navigation' %>
-    <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg.html_safe, class: name %>
+    <% flash.each do |type, message| %>
+      <%= render 'flash_message', type: type, message: message %>
     <% end %>
     <main>
       <%= yield %>

@@ -17,7 +17,7 @@ feature 'When a visitor submits the form to create a new account' do
   end
 
   scenario 'they see a success message' do
-    expect(find('.success')).to have_content('Logged in as JaneDoe89')
+    expect(find('.alert-success')).to have_content('Logged in as JaneDoe89')
   end
 
   scenario 'they see their profile info' do

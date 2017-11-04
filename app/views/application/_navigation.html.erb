@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <a class="navbar-brand" href="/">GigHub</a>
+      <a class="navbar-brand" href="/items">GigHub</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -23,7 +23,7 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <%= link_to items_path, type: "button", class: "btn btn-lg" do %>
+        <%= link_to cart_path, id: 'go-to-cart', type: "button", class: "btn btn-lg" do %>
           <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true">
           </span>
         <% end %>
