@@ -37,13 +37,6 @@ describe Cart do
 
   describe '#remove_item' do
     it 'can remove an item from contents' do
-      @cart.remove_item("2")
-
-      expect(@cart.contents).to eq({"1" => 2, "2" => 2, "3" => 4})
-    end
-
-    it 'deletes item when quantity reaches zero' do
-      @cart.remove_item("1")
       @cart.remove_item("1")
 
       expect(@cart.contents).to eq({"2" => 3, "3" => 4})
