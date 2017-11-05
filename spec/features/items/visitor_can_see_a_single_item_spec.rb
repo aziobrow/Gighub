@@ -28,7 +28,16 @@ feature "when a visitor goes to the item show page"do
 
   scenario "they see a link to add the item to their cart" do
     click_on "Add to Cart"
-
     expect(page).to have_content("You have successfully added #{item.title} to your cart!")
   end
+
+  scenario "they do not see that an active item is retired" do
+    expect(page).to_not have_content(/retired/i)
+  end
+
+  scenario "they see that a retired item is retired" do
+    visit item_path(create(:item, active: false))
+    expect(page).to have_content(/retired/i)
+  end
+
 end

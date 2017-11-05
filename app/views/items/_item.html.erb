@@ -1,5 +1,6 @@
 <li>
   <p><%= item.title %></p>
+  <% if item.retired? %><em>RETIRED</em><% end %>
   <p><%= image_tag(item.image_url, size: "100", alt: item.title) %></p>
   <p><%= button_to "Add to Cart", cart_path(item_id: item.id), class: 'add-to-cart' %></p>
 </li>

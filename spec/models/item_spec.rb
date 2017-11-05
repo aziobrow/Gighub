@@ -66,6 +66,12 @@ describe Item do
     end
   end
 
+  describe 'defaults' do
+    it 'active to true' do
+      expect(Item.new.active).to be true
+    end
+  end
+
   describe 'is associated with' do
 
     before { @item = create(:item) }
