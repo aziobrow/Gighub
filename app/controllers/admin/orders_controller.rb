@@ -7,19 +7,8 @@ class Admin::OrdersController < ApplicationController
   end
 
   def index
-    if params[:status] == "ordered"
-      @orders = Order.by_status("ordered")
-      @status = "ordered"
-    elsif params[:status] == "paid"
-      @orders = Order.by_status("paid")
-      @status = "paid"
-    elsif params[:status] == "cancelled"
-      @orders = Order.by_status("cancelled")
-      @status = "cancelled"
-    else
-      @orders = Order.by_status("completed")
-      @status = "completed"
-    end
+    @status = params[:status]
+    @orders = Order.by_status(@status)
   end
 
 end
