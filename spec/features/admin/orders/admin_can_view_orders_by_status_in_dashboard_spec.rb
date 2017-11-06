@@ -78,6 +78,7 @@ describe "when an admin visits admin dashboard" do
 
   it "they can click on a link to mark paid an ordered order" do
     click_link("Ordered (2)")
+    save_and_open_page
 
     expect(page).to have_link("Order ##{@order1.id}", href: admin_order_path(@order1))
     expect(page).to have_link("Order ##{@order2.id}", href: admin_order_path(@order2))
@@ -97,7 +98,8 @@ describe "when an admin visits admin dashboard" do
 
     expect(page).to have_link("Order ##{@order3.id}", href: admin_order_path(@order3))
 
-    first('.paid-link').click_link('Mark as Paid')
+    click_link('Mark as Completed')
+    
     expect(page).to_not have_link("Order ##{@order3.id}", href: admin_order_path(@order3))
 
     visit admin_dashboard_path
