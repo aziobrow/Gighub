@@ -10,10 +10,9 @@ class OrdersController < ApplicationController
   end
 
   def create
-    order = order.create!(order_params)
+    order = current_user.orders.create!
 
     if order.save
-      session[:user_id] = user.id
       flash[:success] = "Order was successfully placed"
       redirect_to orders_path
     else
