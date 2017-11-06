@@ -22,7 +22,7 @@
   Total Before Tax: $<%= @cart.total_price %>
 <% end %></div>
 
-<% if current_user %>
+<% if logged_in? %>
   <%= button_to "Checkout", orders_path %>
 <% else %>
   <%= link_to "Login or Create Account to Checkout",  login_path %>

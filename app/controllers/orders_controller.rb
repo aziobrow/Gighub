@@ -10,9 +10,8 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = current_user.orders.create!
-    checkout_items
-    if @order.save
+    order = checkout_items
+    if order.save
       flash[:success] = "Order was successfully placed"
       redirect_to orders_path
     else
@@ -21,21 +20,22 @@ class OrdersController < ApplicationController
     end
   end
 
-  private
+private
 
   def order_params
     params.require(:order).permit(:service_address, :purchaser_name)
   end
 
   def checkout_items
+    order = current_user.orders.new
     set_cart.contents.each do |key, value|
-      OrderItem.create!(
-        order_id: @order.id,
+      order.order_items.new(
         item_id: key.to_i,
-        unit_cost: Item.find(key.to_i),
+        unit_cost: Item.find(key.to_i).price,
         quantity: value
       )
     end
+    order
   end
 
 end
