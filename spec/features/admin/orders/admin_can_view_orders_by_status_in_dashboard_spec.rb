@@ -10,7 +10,6 @@ describe "when an admin visits admin dashboard" do
     @order4 = create(:order, status: "cancelled")
     @order5 = create(:order, status: "completed")
     visit admin_dashboard_path
-    save_and_open_page
   end
 
   it "they see a listing of all orders" do
@@ -41,21 +40,21 @@ describe "when an admin visits admin dashboard" do
   end
 
   it "they can click a link to cancel paid orders" do
-    click_on "Cancel"
+    page.all('.cancel-link a')[2].click
 
     expect(page).to have_content("Paid (0)")
     expect(page).to have_content("Cancelled (2)")
   end
 
   it "they can click a link to cancel ordered orders" do
-    click_on "Cancel"
+    first('.cancel-link').click_link('Cancel')
 
     expect(page).to have_content("Ordered (1)")
     expect(page).to have_content("Cancelled (2)")
   end
 
   it "they can click on a link to mark paid an ordered order" do
-    click_on "Mark as Paid"
+    first('.paid-link').click_link('Mark as Paid')
 
     expect(page).to have_content("Ordered (1)")
     expect(page).to have_content("Paid (2)")

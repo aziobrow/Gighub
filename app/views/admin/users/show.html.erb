@@ -4,8 +4,8 @@
   <ul>
     <% @orders.by_status("ordered").each do |ordered_order| %>
     <li><%= link_to "Order ##{ordered_order.id}", admin_order_path(ordered_order) %>
-      <%= link_to "Cancel",  order_path(id: ordered_order.id, status: "cancelled"), method: :patch %>
-      <%= link_to "Mark as Paid", order_path(id: ordered_order.id, status: "paid"), method: :patch %>
+      <div class='cancel-link'><%= link_to "Cancel",  order_path(id: ordered_order.id, status: "cancelled"), method: :patch %></div>
+      <div class='paid-link'><%= link_to "Mark as Paid", order_path(id: ordered_order.id, status: "paid"), method: :patch %></div>
     </li>
     <% end %>
   </ul>
@@ -14,8 +14,8 @@
   <ul>
     <% @orders.by_status("paid").each do |paid_order| %>
     <li><%= link_to "Order ##{paid_order.id}", admin_order_path(paid_order) %>
-      <%= link_to "Cancel", order_path(id: paid_order.id, status: "cancelled"), method: :patch %>
-      <%= link_to "Mark as Completed", order_path(id: paid_order.id, status: "completed"), method: :patch %>
+      <div class='cancel-link'><%= link_to "Cancel", order_path(id: paid_order.id, status: "cancelled"), method: :patch %></div>
+      <div class='completed-link'><%= link_to "Mark as Completed", order_path(id: paid_order.id, status: "completed"), method: :patch %></div>
     </li>
     <% end %>
   </ul>
