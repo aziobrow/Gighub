@@ -4,7 +4,17 @@ describe Item do
 
   describe 'validations' do
 
-    it 'succeed with a title, description, price, image url, and category' do
+    it 'succeed with a unique title, description, price, and category' do
+      item = Item.new(
+        title: 'item title',
+        description: 'item description',
+        price: 9.99,
+        category: create(:category)
+      )
+      expect(item).to be_valid
+    end
+
+    it 'succeed with a optional image url' do
       item = Item.new(
         title: 'item title',
         description: 'item description',
@@ -15,11 +25,21 @@ describe Item do
       expect(item).to be_valid
     end
 
+    it 'fail when the title is already taken' do
+      create(:item, title: 'item title')
+      item = Item.new(
+        title: 'item title',
+        description: 'item description',
+        price: 9.99,
+        category: create(:category)
+      )
+      expect(item).to_not be_valid
+    end
+
     it 'fail without a title' do
       item = Item.new(
         description: 'item description',
         price: 9.99,
-        image_url: 'example.com/item.jpg',
         category: create(:category)
       )
       expect(item).to_not be_valid
@@ -29,7 +49,6 @@ describe Item do
       item = Item.new(
         title: 'item name',
         price: 9.99,
-        image_url: 'example.com/item.jpg',
         category: create(:category)
       )
       expect(item).to_not be_valid
@@ -39,17 +58,6 @@ describe Item do
       item = Item.new(
         title: 'item name',
         description: 'item description',
-        image_url: 'example.com/item.jpg',
-        category: create(:category)
-      )
-      expect(item).to_not be_valid
-    end
-
-    it 'fail without an image url' do
-      item = Item.new(
-        title: 'item name',
-        description: 'item description',
-        price: 9.99,
         category: create(:category)
       )
       expect(item).to_not be_valid
@@ -60,7 +68,6 @@ describe Item do
         title: 'item name',
         description: 'item description',
         price: 9.99,
-        image_url: 'example.com/item.jpg'
       )
       expect(item).to_not be_valid
     end

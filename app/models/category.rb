@@ -7,7 +7,7 @@ class Category < ApplicationRecord
   before_save :generate_slug
 
   def generate_slug
-    self.slug = name.parameterize
+    self.slug ||= name.parameterize
   end
 
 end

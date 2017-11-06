@@ -8,19 +8,23 @@ Rails.application.routes.draw do
     post '/login' => :create
     delete '/logout' => :destroy
   end
-
   resources :users, only: [:new, :create]
   get '/dashboard', to: 'users#show'
 
   resources :items, only: [:index, :show]
+  resources :orders, only: [:index, :show]
 
   resource :cart, only: [:create, :show, :destroy, :update]
 
   namespace :admin do
     resources :orders, only: [:show]
+    resources :items, only: [:new, :create]
     get '/dashboard', to: 'users#show'
   end
+<<<<<<< HEAD
   resources :orders, only: [:show, :index, :create]
+=======
+>>>>>>> staging
 
   get '/:slug', to: 'categories#show', as: 'category_items'
 
