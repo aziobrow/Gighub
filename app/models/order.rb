@@ -12,6 +12,10 @@ class Order < ApplicationRecord
     order_items.sum('unit_cost * quantity')
   end
 
+  def self.by_status(status)
+    where(status: status)
+  end
+
 private
 
   def save_purchaser_name
