@@ -16,7 +16,7 @@ feature 'When a returning visitor tries to log in' do
   end
 
   scenario 'they see a success message' do
-    expect(find('.success')).to have_content('Logged in as JaneDoe89')
+    expect(find('.alert-success')).to have_content('Logged in as JaneDoe89')
   end
 
   scenario 'they see their profile info' do
@@ -29,7 +29,7 @@ feature 'When a returning visitor tries to log in' do
   end
 
   scenario 'they see a "Logout" button' do
-    expect(page).to have_button("Logout")
+    expect(page).to have_content("Logout")
   end
 
 end

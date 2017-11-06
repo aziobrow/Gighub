@@ -12,10 +12,14 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       flash[:success] = "Logged in as #{user.username}"
       redirect_to dashboard_path
+    else
+      flash[:danger] = "Unable to create account"
+      render :new
     end
   end
 
   def show
+    redirect_to admin_dashboard_path if admin_logged_in?
   end
 
 private

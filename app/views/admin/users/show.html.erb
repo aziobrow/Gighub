@@ -1,0 +1,13 @@
+<h1>Admin Dashboard</h1>
+
+<h3> All Orders </h3>
+  <ul>
+    <% @orders.each do |order| %>
+      <li><%= link_to "Order ##{order.id}", admin_order_path(order) %></li>
+  <% end %>
+
+
+  <h2> <%= link_to "Ordered (#{@orders.ordered.count})", admin_orders_path(status: "ordered") %></h2>
+  <h2> <%= link_to "Paid (#{@orders.paid.count})", admin_orders_path(status: "paid") %> </h2>
+  <h2> <%= link_to "Cancelled (#{@orders.cancelled.count})", admin_orders_path(status: "cancelled") %> </h2>
+  <h2> <%= link_to "Completed (#{@orders.completed.count})", admin_orders_path(status: "completed") %> </h2>

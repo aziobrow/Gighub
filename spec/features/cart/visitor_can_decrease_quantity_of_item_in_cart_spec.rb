@@ -2,12 +2,12 @@ require 'rails_helper'
 
 describe "when a visitor has an item in the cart" do
   before do
-    create(:item, price: 2)
+    create(:item, price: 200)
     visit items_path
     first("input.add-to-cart").click
     first("input.add-to-cart").click
     first("input.add-to-cart").click
-    find("#cart").click
+    find("#go-to-cart").click
   end
 
   it "they can see the current quantity of an item" do
@@ -33,10 +33,10 @@ describe "when a visitor has an item in the cart" do
   it "they can see an updated total for the whole cart" do
     fill_in "quantity", with: 1
     click_on "Update Quantity"
-    item = create(:item, price: 5)
+    item = create(:item, price: 500)
     visit items_path
     page.all("input.add-to-cart")[1].click
-    find("#cart").click
+    find("#go-to-cart").click
 
     expect(page).to have_content("Total Before Tax: $7")
   end

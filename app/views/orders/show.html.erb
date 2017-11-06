@@ -1,0 +1,10 @@
+<h2>Your Order</h2>
+
+<p>Ordered: <%= @order.created_at %></p>
+<% unless @order.ordered? %>
+  <p><%= @order.status.capitalize %>: <%= @order.updated_at %></p>
+<% end %>
+
+<%= render @order.order_items %>
+
+<b>Total Cost: <%= in_dollars(@order.total_cost) %></b>

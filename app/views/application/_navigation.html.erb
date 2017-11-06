@@ -13,24 +13,24 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Shop By Category <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><%= link_to "Category 1", items_path %></li>
-            <li role="separator" class="divider"></li>
-            <li><%= link_to "Category 2", items_path %></li>
-            <li role="separator" class="divider"></li>
-            <li><%= link_to "Category 3", items_path %></li>
+            <% Category.all.each do |category| %>
+              <li><%= link_to category.name, category_items_path(category.slug) %></li>
+            <% end %>
           </ul>
         </li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <%= link_to items_path, type: "button", class: "btn btn-lg" do %>
+        <li>
+        <%= link_to cart_path, id: 'go-to-cart', type: "button", class: "btn btn-lg" do %>
           <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true">
           </span>
         <% end %>
+        </li>
         <% if logged_in? %>
-          <%= button_to 'Logout', logout_path, method: :delete %>
+          <li><%= link_to 'Logout', logout_path, method: :delete %></li>
         <% else %>
-          <%= link_to 'Login', login_path %>
+          <li><%= link_to 'Login', login_path %></li>
         <% end %>
       </ul>
 
