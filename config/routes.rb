@@ -21,10 +21,8 @@ Rails.application.routes.draw do
     resources :items, only: [:new, :create]
     get '/dashboard', to: 'users#show'
   end
-<<<<<<< HEAD
+
   resources :orders, only: [:show, :index, :create]
-=======
->>>>>>> staging
 
   get '/:slug', to: 'categories#show', as: 'category_items'
 
