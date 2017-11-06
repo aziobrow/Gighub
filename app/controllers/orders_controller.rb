@@ -10,8 +10,10 @@ class OrdersController < ApplicationController
   end
 
   def create
+    #need to make sure items go into order(add items to order)
+    #set_cart.contents
     order = current_user.orders.create!
-
+    byebug
     if order.save
       flash[:success] = "Order was successfully placed"
       redirect_to orders_path
@@ -23,8 +25,8 @@ class OrdersController < ApplicationController
 
   private
 
-    def order_params
-      params.require(:order).permit(:service_address, :purchaser_name)
-    end
+  def order_params
+    params.require(:order).permit(:service_address, :purchaser_name)
+  end
 
 end
