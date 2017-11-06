@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:show]
     get '/dashboard', to: 'users#show'
   end
-  resources :orders, only: [:show, :index]
+  resources :orders, only: [:show, :index, :create]
 
   get '/:slug', to: 'categories#show', as: 'category_items'
 
