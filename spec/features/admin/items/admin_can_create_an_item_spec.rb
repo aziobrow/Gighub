@@ -16,10 +16,12 @@ feature 'When an admin creates an item' do
   end
 
   scenario 'they are taken to the item page' do
+    click_on 'Create Item'
     expect(page).to have_current_path(item_path(Item.last))
   end
 
   scenario 'they see the details they just entered' do
+    click_on 'Create Item'
     expect(page).to have_content('something unique')
                .and have_content('something descriptive')
                .and have_content('$9.99')
