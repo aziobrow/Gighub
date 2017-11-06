@@ -29,7 +29,7 @@ feature 'When a returning visitor tries to log in' do
   end
 
   scenario 'they see a "Logout" button' do
-    expect(page).to have_button("Logout")
+    expect(page).to have_content("Logout")
   end
 
 end

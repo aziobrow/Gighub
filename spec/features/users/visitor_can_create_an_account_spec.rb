@@ -30,7 +30,7 @@ feature 'When a visitor submits the form to create a new account' do
   end
 
   scenario 'they see a "Logout" button' do
-    expect(find('nav')).to have_button("Logout")
+    expect(find('nav')).to have_content("Logout")
   end
 
 end
