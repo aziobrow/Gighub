@@ -1,6 +1,7 @@
-<li>
-  <p><%= item.title %></p>
-  <% if item.retired? %><em>RETIRED</em><% end %>
-  <p><%= image_tag(item.image_url, size: "100", alt: item.title) %></p>
-  <p><%= button_to "Add to Cart", cart_path(item_id: item.id), class: 'add-to-cart' %></p>
+<li class="list-group-item">
+  <%= image_tag(item.image_url, size: "100", alt: item.title, class: "card-img-top") %>
+  <br />
+  <h2> <%= link_to "#{item.title}", item_path(item) %> </h2>
+  <h4> <% if item.retired? %><em>RETIRED</em><% end %> </h4>
+  <%= button_to "Add to Cart", cart_path(item_id: item.id), class: 'btn btn-primary add-to-cart' %>
 </li>

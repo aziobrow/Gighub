@@ -18,4 +18,8 @@ class Item < ApplicationRecord
     update(active: false)
   end
 
+  def image_url
+    super || "https://cdn.builtincolorado.com/sites/www.builtincolorado.com/files/company_logos/turing-logo-black.png"
+  end
+
 end

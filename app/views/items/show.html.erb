@@ -1,7 +1,12 @@
-<h2><%= @item.title %></h2>
-<% if @item.retired? %><em>RETIRED</em><% end %>
-<%= image_tag(@item.image_url, size: "100", alt: @item.title) %>
-<p>Price: <%= in_dollars(@item.price) %></p>
-<p>Description: <%= @item.description %></p>
-<p>Category: <%= @item.category.name %></p>
-<%= button_to "Add to Cart", cart_path(item_id: @item.id), class: 'add-to-cart' %>
+<ul class="list-group">
+  <li class="list-group-item">
+    <%= image_tag(@item.image_url, size: "100", alt: @item.title, class: "card-img-top") %>
+    <br />
+    <h2> <%= @item.title %> </h2>
+    <h4> <% if @item.retired? %><em>RETIRED</em><% end %> </h4>
+    <h3>Price: <%= in_dollars(@item.price) %></h3>
+    <h3>Description: <%= @item.description %></h3>
+    <h3>Category: <%= @item.category.name %></h3>
+    <%= button_to "Add to Cart", cart_path(item_id: @item.id), class: 'btn btn-primary add-to-cart' %>
+  </li>
+</ul>
