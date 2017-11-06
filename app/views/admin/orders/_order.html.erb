@@ -1,0 +1,10 @@
+<li class="order listing">
+  <%= link_to "Order ##{order.id}", admin_order_path(order) %>
+  <% if @status == "ordered" %>
+    <div class='cancel-link'><%= link_to "Cancel",  order_path(id: order.id, status: "cancelled"), method: :patch %></div>
+    <div class='paid-link'><%= link_to "Mark as Paid", order_path(id: order.id, status: "paid"), method: :patch %></div>
+  <% elsif @status == "paid" %>
+    <div class='cancel-link'><%= link_to "Cancel", order_path(id: order.id, status: "cancelled"), method: :patch %></div>
+    <div class='completed-link'><%= link_to "Mark as Completed", order_path(id: order.id, status: "completed"), method: :patch %></div>
+  <% end %>
+</li>

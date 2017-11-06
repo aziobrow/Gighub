@@ -13,7 +13,7 @@
     <% flash.each do |type, message| %>
       <%= render 'flash_message', type: type, message: message %>
     <% end %>
-    <main>
+    <main class="container-fluid">
       <%= yield %>
     </main>
   </body>
