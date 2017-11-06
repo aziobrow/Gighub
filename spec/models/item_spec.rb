@@ -4,7 +4,7 @@ describe Item do
 
   describe 'validations' do
 
-    it 'succeed with a title, description, price, image url, and category' do
+    it 'succeed with a unique title, description, price, image url, and category' do
       item = Item.new(
         title: 'item title',
         description: 'item description',
@@ -13,6 +13,18 @@ describe Item do
         category: create(:category)
       )
       expect(item).to be_valid
+    end
+
+    it 'fail when the title is already taken' do
+      create(:item, title: 'item title')
+      item = Item.new(
+        title: 'item title',
+        description: 'item description',
+        price: 9.99,
+        image_url: 'example.com/item.jpg',
+        category: create(:category)
+      )
+      expect(item).to_not be_valid
     end
 
     it 'fail without a title' do
