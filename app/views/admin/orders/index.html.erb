@@ -1,6 +1,6 @@
 <h2> <%= @status.capitalize %> Orders </h2>
 <% @orders.each do |order| %>
-  <li><%= link_to "Order ##{order.id}", admin_order_path(order) %></li>
+  <li><%= link_to "Order #{order.id}", admin_order_path(order) %></li>
   <% if @status == "ordered" %>
     <div class='cancel-link'><%= link_to "Cancel",  order_path(id: order.id, status: "cancelled"), method: :patch %></div>
     <div class='paid-link'><%= link_to "Mark as Paid", order_path(id: order.id, status: "paid"), method: :patch %></div>
