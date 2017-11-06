@@ -20,6 +20,11 @@ class OrdersController < ApplicationController
     end
   end
 
+  def update
+    @orders = Order.update(params[:id], status: params[:status])
+    redirect_back(fallback_location: admin_dashboard_path)
+  end
+
 private
 
   def order_params
@@ -37,5 +42,6 @@ private
     end
     order
   end
+
 
 end

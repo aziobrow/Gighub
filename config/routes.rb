@@ -12,9 +12,8 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'users#show'
 
   resources :items, only: [:index, :show]
-  resources :orders, only: [:index, :show, :create]
-
   resource :cart, only: [:create, :show, :destroy, :update]
+  resources :orders, only: [:index, :show, :create, :update]
 
   namespace :admin do
     resources :orders, only: [:show]
