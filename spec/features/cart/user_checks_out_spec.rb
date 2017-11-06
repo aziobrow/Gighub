@@ -13,7 +13,6 @@ feature 'the cart page' do
       user = create(:user)
       allow_any_instance_of(CurrentUserHelper).to receive(:current_user).and_return(user)
       visit cart_path
-      save_and_open_page
       click_on("Checkout")
 
       expect(user.orders.last.status).to eq('ordered')
