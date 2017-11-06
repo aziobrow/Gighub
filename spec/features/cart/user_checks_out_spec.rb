@@ -41,11 +41,11 @@ feature 'the cart page' do
       allow_any_instance_of(CurrentUserHelper).to receive(:current_user).and_return(user)
       visit cart_path
       click_on("Checkout")
-      save_and_open_page
+
       expect(page).to have_content(Item.first.title)
       expect(page).to have_content(Item.first.price)
-      expect(page).to have_content(Item.first.description)
-      expect(first("img")['alt']).to have_content(Item.first.title)
+      expect(page).to have_content("Quantity")
+      expect(page).to have_content("Subtotal")
     end
   end
 end
