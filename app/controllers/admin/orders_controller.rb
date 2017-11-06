@@ -6,4 +6,9 @@ class Admin::OrdersController < ApplicationController
     @order = Order.find(params[:id])
   end
 
+  def index
+    @status = params[:status]
+    @orders = Order.by_status(@status)
+  end
+
 end
