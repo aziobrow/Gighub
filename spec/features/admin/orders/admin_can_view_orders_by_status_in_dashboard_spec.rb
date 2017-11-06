@@ -35,7 +35,8 @@ describe "when an admin visits admin dashboard" do
     expect(page).to have_link("Order ##{@order5.id}", href: admin_order_path(@order5))
   end
 
-  xit "they can filter orders to display by status type" do
+  it "they can filter orders to display by status type" do
+    
 
   end
 

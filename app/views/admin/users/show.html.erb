@@ -1,35 +1,13 @@
 <h1>Admin Dashboard</h1>
 
-<h3> Ordered (<%= @orders.by_status("ordered").count %>) </h3>
+<h3> All Orders </h3>
   <ul>
-    <% @orders.by_status("ordered").each do |ordered_order| %>
-    <li><%= link_to "Order ##{ordered_order.id}", admin_order_path(ordered_order) %>
-      <div class='cancel-link'><%= link_to "Cancel",  order_path(id: ordered_order.id, status: "cancelled"), method: :patch %></div>
-      <div class='paid-link'><%= link_to "Mark as Paid", order_path(id: ordered_order.id, status: "paid"), method: :patch %></div>
-    </li>
-    <% end %>
-  </ul>
+    <% @orders.each do |order| %>
+      <li><%= link_to "Order ##{order.id}", admin_order_path(order) %></li>
+  <% end %>
 
-<h3> Paid (<%= @orders.by_status("paid").count %>) </h3>
-  <ul>
-    <% @orders.by_status("paid").each do |paid_order| %>
-    <li><%= link_to "Order ##{paid_order.id}", admin_order_path(paid_order) %>
-      <div class='cancel-link'><%= link_to "Cancel", order_path(id: paid_order.id, status: "cancelled"), method: :patch %></div>
-      <div class='completed-link'><%= link_to "Mark as Completed", order_path(id: paid_order.id, status: "completed"), method: :patch %></div>
-    </li>
-    <% end %>
-  </ul>
 
-<h3> Cancelled (<%= @orders.by_status("cancelled").count %>) </h3>
-  <ul>
-    <% @orders.by_status("cancelled").each do |cancelled_order| %>
-    <li><%= link_to "Order ##{cancelled_order.id}", admin_order_path(cancelled_order) %></li>
-    <% end %>
-  </ul>
-
-<h3> Completed (<%= @orders.by_status("completed").count %>) </h3>
-  <ul>
-    <% @orders.by_status("completed").each do |completed_order| %>
-    <li><%= link_to "Order ##{completed_order.id}", admin_order_path(completed_order) %></li>
-    <% end %>
-  </ul>
+  <h2> <%= link_to "Ordered (#{@orders.by_status("ordered").count})", admin_orders_path(status: "ordered") %></h2>
+  <h2> <%= link_to "Paid (#{@orders.by_status("paid").count})", admin_orders_path(status: "paid") %> </h2>
+  <h2> <%= link_to "Cancelled (#{@orders.by_status("cancelled").count})", admin_orders_path(status: "cancelled") %> </h2>
+  <h2> <%= link_to "Completed (#{@orders.by_status("completed").count})", admin_orders_path(status: "completed") %> </h2>
