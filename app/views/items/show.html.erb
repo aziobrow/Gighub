@@ -1,6 +1,7 @@
 <h2><%= @item.title %></h2>
 <% if @item.retired? %><em>RETIRED</em><% end %>
 <%= image_tag(@item.image_url, size: "100", alt: @item.title) %>
-<p>Price: $<%= @item.price %></p>
+<p>Price: <%= in_dollars(@item.price) %></p>
 <p>Description: <%= @item.description %></p>
+<p>Category: <%= @item.category.name %></p>
 <%= button_to "Add to Cart", cart_path(item_id: @item.id), class: 'add-to-cart' %>
