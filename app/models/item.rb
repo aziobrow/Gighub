@@ -1,6 +1,7 @@
 class Item < ApplicationRecord
 
-  validates_presence_of :title, :price, :description, :image_url
+  validates_presence_of :price, :description
+  validates :title, presence: true, uniqueness: true
 
   belongs_to :category
   has_many :order_items
