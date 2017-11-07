@@ -1,6 +1,6 @@
 <h2>Order Details</h2>
 
-<p>Purchaser: <%= @order.purchaser_name %></p>
+<p>Purchaser: <%= @order.original_purchaser %></p>
 <% if @order.original_address %>
   <p>Service Adress: <%= @order.original_address %></p>
 <% end %>

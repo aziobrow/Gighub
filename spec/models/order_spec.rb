@@ -29,7 +29,7 @@ describe Order do
       expect(@order.ordered?).to be true
     end
     it 'purchaser name to the user\'s username' do
-      expect(@order.purchaser_name).to eq(@order.user.username)
+      expect(@order.original_purchaser).to eq(@order.user.username)
     end
   end
 
