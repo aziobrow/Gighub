@@ -7,7 +7,7 @@ class Item < ApplicationRecord
   belongs_to :category
   has_many :order_items
 
-  def subtotal_unit_price(quantity)
+  def subtotal(quantity)
     self.unit_price * quantity
   end
 

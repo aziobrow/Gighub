@@ -59,9 +59,9 @@ describe Cart do
     end
   end
 
-  describe '#total_unit_price' do
-    it 'can find the total unit_price of all contents as an integer' do
-      expect(@cart.total_unit_price).to be(90)
+  describe '#total' do
+    it 'can find the total price of all contents as an integer' do
+      expect(@cart.total).to be(90)
     end
   end
 end
