@@ -7,6 +7,6 @@
     <h3>unit_price: <%= in_dollars(@item.unit_price) %></h3>
     <h3>Description: <%= @item.description %></h3>
     <h3>Category: <%= @item.category.name %></h3>
-    <%= button_to "Add to Cart", cart_path(item_id: @item.id), class: 'btn btn-primary add-to-cart' %>
+    <%= render 'add_to_cart_button', item: @item %>
   </li>
 </ul>
