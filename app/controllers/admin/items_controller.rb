@@ -2,21 +2,41 @@ class Admin::ItemsController < ApplicationController
 
   before_action :require_admin
 
+  def index
+    @items = Item.all
+  end
+
   def new
     @item = Item.new
+    @categories = Category.all
+  end
+
+  def edit
+    @item = Item.find(params[:id])
     @categories = Category.all
   end
 
   def create
     item = Item.new(item_params)
     if item.save
-      item.price = (item.price.to_f * 100).to_i
       flash[:success] = "#{item.title} successfully created"
       redirect_to item_path(item)
     else
-      flash[:danger] = item.errors.full_messages.join("\n")
+      flash_save_errors(item)
       redirect_to new_admin_item_path
     end
+  end
+
+  def update
+    item = Item.find(params[:id])
+    if item.update(item_params)
+      flash[:success] = "Successfully updated ##{item.title}"
+      redirect_to admin_dashboard_path
+    else
+      flash_save_errors(item)
+      redirect_to admin_edit_item_path(item)
+    end
+
   end
 
 private
