@@ -32,7 +32,7 @@ private
   end
 
   def checkout_items
-    order = current_user.orders.new
+    order = current_user.orders.new(original_address: current_user.address)
     set_cart.contents.each do |key, value|
       order.order_items.new(
         item_id: key.to_i,
