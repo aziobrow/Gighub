@@ -1,0 +1,8 @@
+<li class="list-group-item">
+  <%= image_tag(item.image_url, size: "100", alt: item.title, class: "card-img-top") %>
+  <br />
+  <h3> <%= link_to "#{item.title}", item_path(item) %> </h3>
+  <% if item.retired? %><em>RETIRED</em><% end %>
+  <p><%= item.description %></p>
+  <%= link_to "Edit", edit_admin_item_path(item) %>
+</li>
