@@ -40,9 +40,9 @@ describe OrderItem do
   end
 
   describe 'defaults' do
-    it 'unit_cost to the item\'s price' do
+    it 'unit_cost to the item\'s unit_price' do
       order_item = create(:order_item)
-      expect(order_item.unit_cost).to eq(order_item.item.price)
+      expect(order_item.unit_cost).to eq(order_item.item.unit_price)
     end
   end
 

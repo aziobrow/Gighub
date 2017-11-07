@@ -14,7 +14,7 @@ class OrderItem < ApplicationRecord
 private
 
   def save_unit_cost
-    self.unit_cost ||= item && item.price
+    self.unit_cost ||= item && item.unit_price
   end
 
 end

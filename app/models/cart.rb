@@ -26,8 +26,8 @@ class Cart
     contents.transform_keys {|key| Item.find(key.to_i)}
   end
 
-  def total_price
-    cart_items.sum  {|item, quantity| item.price * quantity}
+  def total_unit_price
+    cart_items.sum  {|item, quantity| item.unit_price * quantity}
   end
 
   def update_quantity(id, new_quantity)

@@ -18,8 +18,8 @@ feature "when a visitor goes to the item show page"do
     expect(page).to have_content(item.title)
   end
 
-  scenario "they see the price of the item" do
-    expect(page).to have_content('$%.2f' % (item.price / 100.0))
+  scenario "they see the unit_price of the item" do
+    expect(page).to have_content('$%.2f' % (item.unit_price / 100.0))
   end
 
   scenario "they see the item's description" do

@@ -36,7 +36,7 @@ private
     set_cart.contents.each do |key, value|
       order.order_items.new(
         item_id: key.to_i,
-        unit_cost: Item.find(key.to_i).price,
+        unit_cost: Item.find(key.to_i).unit_price,
         quantity: value
       )
     end

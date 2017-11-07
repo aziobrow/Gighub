@@ -4,7 +4,7 @@
     <br />
     <h2> <%= @item.title %> </h2>
     <h4> <% if @item.retired? %><em>RETIRED</em><% end %> </h4>
-    <h3>Price: <%= in_dollars(@item.price) %></h3>
+    <h3>unit_price: <%= in_dollars(@item.unit_price) %></h3>
     <h3>Description: <%= @item.description %></h3>
     <h3>Category: <%= @item.category.name %></h3>
     <%= button_to "Add to Cart", cart_path(item_id: @item.id), class: 'btn btn-primary add-to-cart' %>

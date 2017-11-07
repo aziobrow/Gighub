@@ -24,7 +24,7 @@ feature 'the cart page' do
 
     scenario 'the user sees the placed order in a table' do
       expect(page).to have_content(Item.first.title)
-      expect(page).to have_content(Item.first.price)
+      expect(page).to have_content(Item.first.unit_price)
       expect(page).to have_content("Quantity: #{OrderItem.first.quantity}")
       expect(page).to have_content('Subtotal: $%.2f' % (OrderItem.first.subtotal / 100.0))
     end

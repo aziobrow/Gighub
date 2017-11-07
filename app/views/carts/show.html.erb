@@ -13,13 +13,13 @@
       <%= submit_tag("Update Quantity") %>
     <% end %>
     Description: <%= item.description %>
-    Price: <%= in_dollars(item.price) %>
-    Item Subtotal: <%= in_dollars(item.subtotal_price(quantity)) %>
+    unit_price: <%= in_dollars(item.unit_price) %>
+    Item Subtotal: <%= in_dollars(item.subtotal_unit_price(quantity)) %>
     <%= image_tag(item.image_url, size: "100x100", alt: item.title) %>
     <%= link_to "Remove", cart_path(item_id: item.id), method: :delete %>
   <% end %>
 
-  Total Before Tax: $<%= @cart.total_price %>
+  Total Before Tax: $<%= @cart.total_unit_price %>
 <% end %></div>
 
 <% if logged_in? %>
