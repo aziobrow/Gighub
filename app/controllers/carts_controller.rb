@@ -15,12 +15,12 @@ class CartsController < ApplicationController
   def update
     quantity = params[:quantity].to_i
     if quantity.negative?
-      flash[:danger] = 'quantity cannot be negative'
+      flash[:danger] = 'Quantity cannot be negative'
     elsif quantity.zero?
       remove_item
     else
       @cart.update_quantity(params[:item_id], quantity)
-      flash[:success] = "quantity updated"
+      flash[:success] = "Quantity updated"
     end
     redirect_back(fallback_location: cart_path)
   end
