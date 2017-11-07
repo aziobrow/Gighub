@@ -23,7 +23,7 @@ describe Order do
 
   describe 'defaults' do
     before do
-      @order = Order.create(user: create(:user))
+      @order = Order.create(original_purchaser: create(:user), original_address: "address")
     end
     it 'status to "ordered"' do
       expect(@order.ordered?).to be true
