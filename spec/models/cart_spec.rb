@@ -61,7 +61,7 @@ describe Cart do
 
   describe '#total' do
     it 'can find the total price of all contents as an integer' do
-      expect(@cart.total).to be(90)
+      expect(@cart.total_price).to be(90)
     end
   end
 end

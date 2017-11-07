@@ -19,7 +19,7 @@
     <%= link_to "Remove", cart_path(item_id: item.id), method: :delete %>
   <% end %>
 
-  Total Before Tax: $<%= @cart.total %>
+  Total Before Tax: $<%= @cart.total_price %>
 <% end %></div>
 
 <% if logged_in? %>
