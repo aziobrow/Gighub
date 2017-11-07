@@ -12,7 +12,7 @@ feature 'When an admin clicks edit for an item' do
   end
 
   scenario 'they are taken to a form to edit that item' do
-    expect(page).to have_current_path('admin/items/1/edit')
+    expect(page).to have_current_path(edit_admin_item_path(1))
   end
 
   context 'and they fill out the form and click submit' do
@@ -24,8 +24,8 @@ feature 'When an admin clicks edit for an item' do
       click_on 'Update Item'
     end
 
-    scenario 'they are taken back to the admin dashboard?' do
-      skip 'i could see /admin/dashboard or /items/id'
+    scenario 'they are taken back to the admin items index' do
+      expect(page).to have_current_path(item_path(1))
     end
 
     scenario 'they see a success message' do

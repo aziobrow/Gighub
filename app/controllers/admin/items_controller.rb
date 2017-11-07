@@ -30,8 +30,8 @@ class Admin::ItemsController < ApplicationController
   def update
     item = Item.find(params[:id])
     if item.update(item_params)
-      flash[:success] = "Successfully updated ##{item.title}"
-      redirect_to admin_dashboard_path
+      flash[:success] = "Successfully updated #{item.title}"
+      redirect_to item_path
     else
       flash_save_errors(item)
       redirect_to admin_edit_item_path(item)
@@ -49,7 +49,7 @@ private
       :category_id,
       :image_url
     )
-    raw_params[:price] = (raw_params[:price].to_f * 100).to_i
+    raw_params[:price] = (raw_params[:price].to_f * 100).round
     raw_params
   end
 

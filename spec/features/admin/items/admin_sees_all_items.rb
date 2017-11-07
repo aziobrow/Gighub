@@ -12,7 +12,7 @@ feature 'When an admin clicks "All Items" from their dashboard' do
   end
 
   scenario 'they are taken to the admin item index' do
-    expect(page).to have_current_path('admin/items')
+    expect(page).to have_current_path(admin_items_path)
   end
 
   scenario 'they see the titles linked to the show pages' do
