@@ -1,5 +1,5 @@
-class ChangeUnitCostToUnitPriceInItems < ActiveRecord::Migration[5.1]
+class ChangePriceToUnitPriceInItems < ActiveRecord::Migration[5.1]
   def change
-    rename_column :items, :unit_cost, :unit_price
+    rename_column :items, :price, :unit_price
   end
 end
