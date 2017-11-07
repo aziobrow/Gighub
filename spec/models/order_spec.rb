@@ -50,7 +50,7 @@ describe Order do
 
   describe 'instance methods' do
     it '#total_cost returns the total cost in cents' do
-      order = create(:order_item, unit_cost: 199, quantity: 2).order
+      order = create(:order_item, original_unit_price: 199, quantity: 2).order
       expect(order.total_cost).to eq(398)
     end
   end

@@ -1,6 +1,6 @@
 <li>
   <p>Item: <%= link_to order_item.item.title, item_path(order_item.item) %></p>
   <p>Quantity: <%= order_item.quantity %></p>
-  <p>Unit Cost: <%= in_dollars(order_item.unit_cost) %></p>
+  <p>Unit Cost: <%= in_dollars(order_item.original_unit_price) %></p>
   <p>Subtotal: <%= in_dollars(order_item.subtotal) %></p>
 </li>

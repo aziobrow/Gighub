@@ -39,8 +39,8 @@ feature 'When an admin visits an order page' do
     end
 
     scenario 'they see the unit unit_price' do
-      expect(page).to have_content(OrderItem.first.unit_cost)
-      expect(page).to have_content(OrderItem.last.unit_cost)
+      expect(page).to have_content(OrderItem.first.original_unit_price)
+      expect(page).to have_content(OrderItem.last.original_unit_price)
     end
 
     scenario 'they see the quantity' do

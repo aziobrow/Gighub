@@ -11,7 +11,7 @@ class Order < ApplicationRecord
   enum status: ['ordered', 'paid', 'cancelled', 'completed']
 
   def total_cost
-    order_items.sum('unit_cost * quantity')
+    order_items.sum('original_unit_price * quantity')
   end
 
   def self.by_status(status)
