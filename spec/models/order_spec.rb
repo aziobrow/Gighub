@@ -14,7 +14,7 @@ describe Order do
     end
 
     it 'pass with optional service address' do
-      order = Order.new(user: create(:user), service_address: '1234 Fake St.')
+      order = Order.new(user: create(:user), original_address: '1234 Fake St.')
       expect(order).to be_valid
     end
 

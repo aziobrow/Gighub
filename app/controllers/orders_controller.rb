@@ -28,7 +28,7 @@ class OrdersController < ApplicationController
 private
 
   def order_params
-    params.require(:order).permit(:service_address, :purchaser_name)
+    params.require(:order).permit(:original_address, :purchaser_name)
   end
 
   def checkout_items

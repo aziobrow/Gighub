@@ -28,7 +28,7 @@ feature 'When an admin visits an order page' do
 
   scenario 'they can see the purchaser\'s full name and address' do
     expect(page).to have_content(Order.first.purchaser_name)
-    expect(page).to have_content(Order.first.service_address)
+    expect(page).to have_content(Order.first.original_address)
   end
 
   feature 'and looks at each item' do
