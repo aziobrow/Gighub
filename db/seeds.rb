@@ -32,7 +32,8 @@ Item.create!([{
   description: "I'll unclog your sink!",
   category: Category.last,
   price: 15000,
-  image_url: "https://www.homedepot.com/hdus/en_US/DTCCOMNEW/fetch/Category_Pages/Kitchen/Sinks/bar-prep-sink-400x400-2.png"
+  image_url: "https://www.homedepot.com/hdus/en_US/DTCCOMNEW/fetch/Category_Pages/Kitchen/Sinks/bar-prep-sink-400x400-2.png",
+  active: false
 }])
 
 Order.create!([{
