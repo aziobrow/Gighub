@@ -1,5 +1,7 @@
 <h1>Admin Dashboard</h1>
 
+<%= link_to "Update Profile Information", admin_edit_path %>
+
 <h3> Order Breakdown </h3>
 <h5> <%= "Ordered (#{@all_orders.ordered.count})" %></h5>
 <h5> <%= "Paid (#{@all_orders.paid.count})" %> </h5>

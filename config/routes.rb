@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     resources :orders, only: [:show]
     resources :items, only: [:new, :create, :edit, :update, :index]
     get '/dashboard', to: 'users#show'
+    get '/edit', to: 'users#edit'
+    resources :users, only: [:update]
   end
 
   get '/:slug', to: 'categories#show', as: 'category_items'
