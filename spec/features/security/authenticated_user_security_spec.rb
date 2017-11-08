@@ -2,13 +2,15 @@ require 'rails_helper'
 
 describe "as an authenticated user" do
   before do
-    user = create(:user)
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    user1 = create(:user)
+    @user2 = create(:user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user1)
   end
 
-  xit "they cannot view another user's order show page" do
+  it "they cannot view another user's order show page" do
+    order = create(:order, user: @user2)
 
-
+    expect{ visit order_path(order) }.to raise_error(ActionController::RoutingError)
   end
 
   it "they cannot visit an admin order show page" do

@@ -2,7 +2,11 @@ class OrdersController < ApplicationController
   before_action :require_login
 
   def show
-    @order = current_user.orders.find(params[:id])
+    if current_user.orders.include?(params[:id])
+      @order = current_user.orders.find(params[:id])
+    else
+      raise ActionController::RoutingError.new('Not Found')
+    end
   end
 
   def index
