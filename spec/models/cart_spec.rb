@@ -3,9 +3,9 @@ require 'rails_helper'
 describe Cart do
 
   before do
-    item1 = create(:item, id: 1, price: 10)
-    item2 = create(:item, id: 2, price: 10)
-    item3 = create(:item, id: 3, price: 10)
+    item1 = create(:item, id: 1, unit_price: 10)
+    item2 = create(:item, id: 2, unit_price: 10)
+    item3 = create(:item, id: 3, unit_price: 10)
     @cart = Cart.new("1" => 2, "2" => 3, "3" => 4)
   end
 
@@ -59,7 +59,7 @@ describe Cart do
     end
   end
 
-  describe '#total_price' do
+  describe '#total' do
     it 'can find the total price of all contents as an integer' do
       expect(@cart.total_price).to be(90)
     end

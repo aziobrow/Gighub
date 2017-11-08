@@ -5,6 +5,8 @@ feature 'When a visitor submits the form to create a new account' do
   background do
     visit login_path
     click_on "Create Account"
+    fill_in 'user[name]', with: 'Jane Doe'
+    fill_in 'user[address]', with: 'Fake St'
     fill_in 'user[username]', with: 'JaneDoe89'
     fill_in 'user[email]', with: 'janedoe89@example.com'
     fill_in 'user[password]', with: 'pw'

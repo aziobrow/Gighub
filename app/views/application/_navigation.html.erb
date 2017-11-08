@@ -2,13 +2,18 @@
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <a class="navbar-brand" href="/items">GigHub</a>
+      <a class="navbar-brand" href="/">GigHub</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li> <%= link_to "All", items_path %> </li>
+        <% if admin_logged_in? %>
+          <li> <%= link_to "All Services", admin_items_path %> </li>
+          <li> <%= link_to "Add New Service", new_admin_item_path %> </li>
+        <% else %>
+          <li> <%= link_to "All Services", items_path %> </li>
+        <% end %>
 
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Shop By Category <span class="caret"></span></a>
@@ -21,12 +26,23 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
+        <% if logged_in? %>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Welcome <%= current_user.username.capitalize %> <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "My Dashboard", dashboard_path %></li>
+            <li><%= link_to "My Orders", orders_path %></li>
+          </ul>
+        </li>
+        <% end %>
+
         <li>
         <%= link_to cart_path, id: 'go-to-cart', type: "button", class: "btn btn-lg" do %>
           <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true">
           </span>
         <% end %>
         </li>
+
         <% if logged_in? %>
           <li><%= link_to 'Logout', logout_path, method: :delete %></li>
         <% else %>

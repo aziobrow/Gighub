@@ -2,7 +2,11 @@ class OrdersController < ApplicationController
   before_action :require_login
 
   def show
-    @order = current_user.orders.find(params[:id])
+    if current_user.orders.include?(Order.find(params[:id]))
+      @order = current_user.orders.find(params[:id])
+    else
+      render_404
+    end
   end
 
   def index
@@ -28,15 +32,15 @@ class OrdersController < ApplicationController
 private
 
   def order_params
-    params.require(:order).permit(:service_address, :purchaser_name)
+    params.require(:order).permit(:original_address, :original_purchaser)
   end
 
   def checkout_items
-    order = current_user.orders.new
+    order = current_user.orders.new(original_address: current_user.address)
     set_cart.contents.each do |key, value|
       order.order_items.new(
         item_id: key.to_i,
-        unit_cost: Item.find(key.to_i).price,
+        original_unit_price: Item.find(key.to_i).unit_price,
         quantity: value
       )
     end

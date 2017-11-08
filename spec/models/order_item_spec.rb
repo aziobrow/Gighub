@@ -40,9 +40,13 @@ describe OrderItem do
   end
 
   describe 'defaults' do
-    it 'unit_cost to the item\'s price' do
+    it 'original_unit_price to the item\'s unit_price' do
       order_item = create(:order_item)
-      expect(order_item.unit_cost).to eq(order_item.item.price)
+      expect(order_item.original_unit_price).to eq(order_item.item.unit_price)
+    end
+
+    it 'units to be hourly' do
+      expect(OrderItem.new.hourly?).to be true
     end
   end
 
@@ -61,8 +65,8 @@ describe OrderItem do
   end
 
   describe 'instance methods' do
-    it '#subtotal returns the unit_cost * quantity in cents' do
-      order_item = create(:order_item, unit_cost: 199, quantity: 2)
+    it '#subtotal returns the original_unit_price * quantity in cents' do
+      order_item = create(:order_item, original_unit_price: 199, quantity: 2)
       expect(order_item.subtotal).to eq(398)
     end
   end

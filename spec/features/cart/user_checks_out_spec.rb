@@ -23,10 +23,12 @@ feature 'the cart page' do
     end
 
     scenario 'the user sees the placed order in a table' do
-      expect(page).to have_content(Item.first.title)
-      expect(page).to have_content(Item.first.price)
-      expect(page).to have_content("Quantity: #{OrderItem.first.quantity}")
-      expect(page).to have_content('Subtotal: $%.2f' % (OrderItem.first.subtotal / 100.0))
+      expect(page).to have_css '#order-table'
+      within '#order-table' do
+        expect(page).to have_text "Order ##{Order.last.id}"
+        expect(page).to have_text "#{Order.last.created_at.strftime("%m/%d/%Y")}"
+      end
     end
+
   end
 end

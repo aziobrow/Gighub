@@ -19,9 +19,9 @@ feature 'The past order show page' do
     end
 
     scenario 'halts with 404 if user is not the purchaser' do
-      expect{ visit order_path(create(:order)) }.to raise_error(
-        ActiveRecord::RecordNotFound
-      )
+      visit order_path(create(:order))
+
+      expect(page.status_code).to eq(404)
     end
 
     context 'who is the purchaser' do
@@ -59,12 +59,12 @@ feature 'The past order show page' do
         )
       end
 
-      scenario 'displays the total price of the order' do
+      scenario 'displays the total unit_price of the order' do
         expect(page).to have_content('Total Cost: $%.2f' % (@order.total_cost / 100.0))
       end
 
       scenario 'displays the date/time that the order was submitted' do
-        expect(page).to have_content("Ordered: #{@order.created_at}")
+        expect(page).to have_content("Ordered: #{@order.format_created_time}")
       end
 
       scenario 'displays the date/time completed if completed' do
@@ -72,14 +72,14 @@ feature 'The past order show page' do
         @order.update status: :completed, updated_at: time
         @order.update(updated_at: 2.days.ago)
         visit order_path(@order)
-        expect(page).to have_content("Completed: #{2.days.ago}")
+        expect(page).to have_content("Completed: #{@order.format_updated_time}")
       end
 
       scenario 'displays the date/time cancelled if cancelled' do
         time = 2.days.ago
         @order.update status: :cancelled, updated_at: time
         visit order_path(@order)
-        expect(page).to have_content("Cancelled: #{time}")
+        expect(page).to have_content("Cancelled: #{@order.format_updated_time}")
       end
 
     end

@@ -34,40 +34,23 @@ feature 'The past orders page' do
         visit orders_path
       end
 
-      scenario 'displays each item title' do
-        expect(page).to have_content(@item1.title)
-                    .and have_content(@item2.title)
+      scenario 'they see a link to their order' do
+        expect(page).to have_link("Order ##{@order.id}")
       end
 
-      scenario 'has a link to each item page' do
-        expect(page).to have_link(href: item_path(@item1))
-                    .and have_link(href: item_path(@item2))
-      end
+      scenario "they can click the link to see order details" do
+        click_on("Order ##{@order.id}")
 
-      scenario('displays the total price of the order') do
-        expect(page).to have_content('Total Cost: $%.2f' % (@order.total_cost / 100.0))
-      end
+        expect(current_path).to eq(order_path(@order))
+        expect(page).to have_content("Current Status: #{@order.status.capitalize}")
 
-      scenario('displays the date/time that the order was submitted') do
-        expect(page).to have_content("Ordered: #{@order.created_at}")
-      end
-
-      scenario('displays the date/time completed if completed') do
-        time = 2.days.ago
-        @current_user.orders.update status: :completed, updated_at: time
-        visit orders_path
-        expect(page).to have_content("Completed: #{time}")
-      end
-
-      scenario('displays the date/time cancelled if cancelled') do
-        time = 2.days.ago
-        @current_user.orders.update status: :cancelled, updated_at: time
-        visit orders_path
-        expect(page).to have_content("Cancelled: #{time}")
+        @order.order_items.each do |order_item|
+          expect(page).to have_content("Quantity: #{order_item.quantity}")
+          expect(page).to have_content("Subtotal: $#{order_item.subtotal}")
+          expect(page).to have_link("#{order_item.item.name}")
+        end
       end
 
     end
-
   end
-
 end

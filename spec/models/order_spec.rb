@@ -14,22 +14,17 @@ describe Order do
     end
 
     it 'pass with optional service address' do
-      order = Order.new(user: create(:user), service_address: '1234 Fake St.')
+      order = Order.new(user: create(:user), original_address: '1234 Fake St.')
       expect(order).to be_valid
     end
-
-
   end
 
   describe 'defaults' do
     before do
-      @order = Order.create(user: create(:user))
+      @order = Order.create(original_purchaser: create(:user), original_address: "address")
     end
     it 'status to "ordered"' do
       expect(@order.ordered?).to be true
-    end
-    it 'purchaser name to the user\'s username' do
-      expect(@order.purchaser_name).to eq(@order.user.username)
     end
   end
 
@@ -45,12 +40,11 @@ describe Order do
       @order.order_items << create(:order_item)
       expect(@order.order_items.first).to be_a OrderItem
     end
-
   end
 
   describe 'instance methods' do
     it '#total_cost returns the total cost in cents' do
-      order = create(:order_item, unit_cost: 199, quantity: 2).order
+      order = create(:order_item, original_unit_price: 199, quantity: 2).order
       expect(order.total_cost).to eq(398)
     end
   end

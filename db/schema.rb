@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171106023622) do
+ActiveRecord::Schema.define(version: 20171108151631) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,10 +24,11 @@ ActiveRecord::Schema.define(version: 20171106023622) do
   create_table "items", force: :cascade do |t|
     t.string "title", null: false
     t.string "image_url"
-    t.integer "price", null: false
+    t.integer "unit_price", null: false
     t.text "description", null: false
     t.bigint "category_id"
     t.boolean "active", default: true, null: false
+    t.integer "unit", default: 1, null: false
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["title"], name: "index_items_on_title", unique: true
   end
@@ -35,15 +36,16 @@ ActiveRecord::Schema.define(version: 20171106023622) do
   create_table "order_items", force: :cascade do |t|
     t.bigint "order_id"
     t.bigint "item_id"
-    t.integer "unit_cost", null: false
+    t.integer "original_unit_price", null: false
     t.integer "quantity", null: false
+    t.integer "original_unit", default: 1, null: false
     t.index ["item_id"], name: "index_order_items_on_item_id"
     t.index ["order_id"], name: "index_order_items_on_order_id"
   end
 
   create_table "orders", force: :cascade do |t|
-    t.string "service_address"
-    t.string "purchaser_name", null: false
+    t.string "original_address", null: false
+    t.string "original_purchaser", null: false
     t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -56,6 +58,8 @@ ActiveRecord::Schema.define(version: 20171106023622) do
     t.string "password_digest", null: false
     t.string "email", null: false
     t.integer "role", default: 0, null: false
+    t.string "name", null: false
+    t.string "address", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end

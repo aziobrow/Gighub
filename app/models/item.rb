@@ -1,13 +1,16 @@
 class Item < ApplicationRecord
 
-  validates_presence_of :price, :description
+  validates_presence_of :description
   validates :title, presence: true, uniqueness: true
+  validates :unit_price, presence: true, :numericality => { :greater_than_or_equal_to => 0 }
 
   belongs_to :category
   has_many :order_items
 
-  def subtotal_price(quantity)
-    self.price * quantity
+  enum unit: ['fifteen_min', 'hourly', 'daily', 'flat_rate']
+
+  def subtotal(quantity)
+    self.unit_price * quantity
   end
 
   def retired?
