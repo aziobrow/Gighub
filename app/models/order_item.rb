@@ -7,6 +7,8 @@ class OrderItem < ApplicationRecord
   belongs_to :item
   before_validation :save_original_unit_price
 
+  enum original_unit: ['fifteen_min', 'hourly', 'daily', 'flat_rate']
+
   def subtotal
     original_unit_price * quantity
   end

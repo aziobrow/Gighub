@@ -38,7 +38,7 @@ Item.create!([{
   unit_price: 15000,
   image_url: "https://www.homedepot.com/hdus/en_US/DTCCOMNEW/fetch/Category_Pages/Kitchen/Sinks/bar-prep-sink-400x400-2.png",
   active: false,
-  units: 0
+  unit: 0
 }])
 
 Order.create!([{
@@ -56,17 +56,17 @@ OrderItem.create!([{
   item: Item.first,
   quantity: 2,
   original_unit_price: Item.first.unit_price,
-  units: Item.first.units
+  original_unit: Item.first.unit
 },{
   order: Order.first,
   item: Item.last,
   quantity: 1,
   original_unit_price: Item.last.unit_price,
-  units: Item.last.units
+  original_unit: Item.last.unit
 },{
   order: Order.last,
   item: Item.first,
   quantity: 3,
   original_unit_price: Item.first.unit_price,
-  units: Item.first.units
+  original_unit: Item.first.unit
 }])

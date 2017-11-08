@@ -79,7 +79,7 @@ describe Item do
     end
 
     it 'units to be hourly' do
-      expect(item.new.hourly?).to be true
+      expect(Item.new.hourly?).to be true
     end
   end
 

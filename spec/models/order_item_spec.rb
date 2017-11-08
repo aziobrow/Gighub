@@ -44,6 +44,10 @@ describe OrderItem do
       order_item = create(:order_item)
       expect(order_item.original_unit_price).to eq(order_item.item.unit_price)
     end
+
+    it 'units to be hourly' do
+      expect(OrderItem.new.hourly?).to be true
+    end
   end
 
   describe 'is associated with' do

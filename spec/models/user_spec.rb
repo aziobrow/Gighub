@@ -4,12 +4,14 @@ describe User do
 
   describe 'validations' do
 
-    it 'pass with unique username, unique email, and confirmed password' do
+    it 'pass with unique username, unique email, confirmed password, name, and address' do
       user = User.new(
         username: 'JaneDoe89',
         email: 'janedoe89@example.com',
         password: 'password',
-        password_confirmation: 'password'
+        password_confirmation: 'password',
+        name: "Jane Doe",
+        address: "123 Fake St"
       )
       expect(user).to be_valid
     end
@@ -18,7 +20,9 @@ describe User do
       user = User.new(
         email: 'janedoe89@example.com',
         password: 'password',
-        password_confirmation: 'password'
+        password_confirmation: 'password',
+        name: "Jane Doe",
+        address: "123 Fake St"
       )
       expect(user).to_not be_valid
     end
@@ -29,7 +33,9 @@ describe User do
         username: 'JaneDoe89',
         email: 'janedoe89@example.com',
         password: 'password',
-        password_confirmation: 'password'
+        password_confirmation: 'password',
+        name: "Jane Doe",
+        address: "123 Fake St"
       )
       expect(user).to_not be_valid
     end
@@ -38,7 +44,9 @@ describe User do
       user = User.new(
         username: 'JaneDoe89',
         password: 'password',
-        password_confirmation: 'password'
+        password_confirmation: 'password',
+        name: "Jane Doe",
+        address: "123 Fake St"
       )
       expect(user).to_not be_valid
     end
@@ -49,7 +57,9 @@ describe User do
         username: 'JaneDoe89',
         email: 'janedoe89@example.com',
         password: 'password',
-        password_confirmation: 'password'
+        password_confirmation: 'password',
+        name: "Jane Doe",
+        address: "123 Fake St"
       )
       expect(user).to_not be_valid
     end
@@ -58,7 +68,9 @@ describe User do
       user = User.new(
         username: 'JaneDoe89',
         email: 'janedoe89@example.com',
-        password_confirmation: 'password'
+        password_confirmation: 'password',
+        name: "Jane Doe",
+        address: "123 Fake St"
       )
       expect(user).to_not be_valid
     end
@@ -68,7 +80,31 @@ describe User do
         username: 'JaneDoe89',
         email: 'janedoe89@example.com',
         password: 'password',
-        password_confirmation: 'nope'
+        password_confirmation: 'nope',
+        name: "Jane Doe",
+        address: "123 Fake St"
+      )
+      expect(user).to_not be_valid
+    end
+
+    it 'fail with no name' do
+      user = User.new(
+        username: 'JaneDoe89',
+        email: 'janedoe89@example.com',
+        password: 'password',
+        password_confirmation: 'password',
+        address: "123 Fake St"
+      )
+      expect(user).to_not be_valid
+    end
+
+    it 'fail with no address' do
+      user = User.new(
+        username: 'JaneDoe89',
+        email: 'janedoe89@example.com',
+        password: 'password',
+        password_confirmation: 'password',
+        name: "Jane Doe"
       )
       expect(user).to_not be_valid
     end
