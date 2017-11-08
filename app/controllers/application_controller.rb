@@ -20,6 +20,10 @@ class ApplicationController < ActionController::Base
     raise ActionController::RoutingError.new('Not Found')
   end
 
+  def render_404
+    render file: "#{Rails.root}/public/404", layout: false, status: :not_found
+  end
+
   def flash_save_errors(record)
     flash[:danger] = record.errors.full_messages.join("\n")
   end

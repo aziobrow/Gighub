@@ -19,9 +19,9 @@ feature 'The past order show page' do
     end
 
     scenario 'halts with 404 if user is not the purchaser' do
-      expect{ visit order_path(create(:order)) }.to raise_error(
-        ActiveRecord::RecordNotFound
-      )
+      visit order_path(create(:order))
+
+      expect(page.status_code).to eq(404)
     end
 
     context 'who is the purchaser' do
