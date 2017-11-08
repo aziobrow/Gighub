@@ -18,6 +18,14 @@ class Order < ApplicationRecord
     where(status: status)
   end
 
+  def format_created_time
+    created_at.strftime("%m/%d/%Y at %I:%M %p")
+  end
+
+  def format_updated_time
+    updated_at.strftime("%m/%d/%Y at %I:%M %p")
+  end
+
 private
 
   def save_original_purchaser

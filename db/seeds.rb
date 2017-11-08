@@ -39,6 +39,21 @@ Item.create!([{
   image_url: "https://www.homedepot.com/hdus/en_US/DTCCOMNEW/fetch/Category_Pages/Kitchen/Sinks/bar-prep-sink-400x400-2.png",
   active: false,
   unit: 0
+},{
+  title: "Web Development",
+  description: "Making WebApps",
+  category: Category.first,
+  unit_price: 50000,
+  image_url: "https://recruitee.com/academy/wp-content/uploads/2015/11/photo-1429051883746-afd9d56fbdaf.jpeg",
+  unit: 2
+},{
+  title: "Painting",
+  description: "Painting one room of your house",
+  category: Category.last,
+  unit_price: 20000,
+  image_url: "https://thumbs.dreamstime.com/z/painter-painting-wall-happy-young-male-41059866.jpg",
+  active: false,
+  unit: 3
 }])
 
 Order.create!([{
