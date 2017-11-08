@@ -4,11 +4,11 @@ describe Item do
 
   describe 'validations' do
 
-    it 'succeed with a unique title, description, price, and category' do
+    it 'succeed with a unique title, description, unit_price, and category' do
       item = Item.new(
         title: 'item title',
         description: 'item description',
-        price: 9.99,
+        unit_price: 9.99,
         category: create(:category)
       )
       expect(item).to be_valid
@@ -18,7 +18,7 @@ describe Item do
       item = Item.new(
         title: 'item title',
         description: 'item description',
-        price: 9.99,
+        unit_price: 9.99,
         image_url: 'example.com/item.jpg',
         category: create(:category)
       )
@@ -30,7 +30,7 @@ describe Item do
       item = Item.new(
         title: 'item title',
         description: 'item description',
-        price: 9.99,
+        unit_price: 9.99,
         category: create(:category)
       )
       expect(item).to_not be_valid
@@ -39,7 +39,7 @@ describe Item do
     it 'fail without a title' do
       item = Item.new(
         description: 'item description',
-        price: 9.99,
+        unit_price: 9.99,
         category: create(:category)
       )
       expect(item).to_not be_valid
@@ -48,13 +48,13 @@ describe Item do
     it 'fail without a description' do
       item = Item.new(
         title: 'item name',
-        price: 9.99,
+        unit_price: 9.99,
         category: create(:category)
       )
       expect(item).to_not be_valid
     end
 
-    it 'fail without a price' do
+    it 'fail without a unit_price' do
       item = Item.new(
         title: 'item name',
         description: 'item description',
@@ -67,7 +67,7 @@ describe Item do
       item = Item.new(
         title: 'item name',
         description: 'item description',
-        price: 9.99,
+        unit_price: 9.99,
       )
       expect(item).to_not be_valid
     end

@@ -59,7 +59,7 @@ feature 'The past order show page' do
         )
       end
 
-      scenario 'displays the total price of the order' do
+      scenario 'displays the total unit_price of the order' do
         expect(page).to have_content('Total Cost: $%.2f' % (@order.total_cost / 100.0))
       end
 

@@ -11,7 +11,7 @@ describe "a visitor visits their cart" do
     it "they do not see an option to checkout" do
       expect(current_path).to eq(cart_path)
       expect(page).to have_content(Item.first.title)
-      expect(page).to have_content(Item.first.price)
+      expect(page).to have_content(Item.first.unit_price)
       expect(page).to have_content(Item.first.description)
       expect(first("img")['alt']).to have_content(Item.first.title)
       expect(page).to have_content("Login or Create Account to Checkout")
@@ -35,7 +35,7 @@ describe "a visitor visits their cart" do
       visit cart_path
 
       expect(page).to have_content(Item.first.title)
-      expect(page).to have_content(Item.first.price)
+      expect(page).to have_content(Item.first.unit_price)
       expect(page).to have_content(Item.first.description)
       expect(first("img")['alt']).to have_content(Item.first.title)
     end

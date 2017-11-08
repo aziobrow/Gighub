@@ -44,7 +44,7 @@ feature 'The past orders page' do
                     .and have_link(href: item_path(@item2))
       end
 
-      scenario('displays the total price of the order') do
+      scenario('displays the total unit_price of the order') do
         expect(page).to have_content('Total Cost: $%.2f' % (@order.total_cost / 100.0))
       end
 

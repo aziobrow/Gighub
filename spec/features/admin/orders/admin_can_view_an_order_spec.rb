@@ -8,7 +8,7 @@ feature 'When an admin visits an order page' do
       .and_return(create(:admin))
 
     order = create(:order)
-    items = create_list(:item, 2, price: 7)
+    items = create_list(:item, 2, unit_price: 7)
     create(:order_item, order: order, quantity: 1, item: items.first)
     create(:order_item, order: order, quantity: 2, item: items.last)
     visit admin_order_path(order)
@@ -27,8 +27,8 @@ feature 'When an admin visits an order page' do
   end
 
   scenario 'they can see the purchaser\'s full name and address' do
-    expect(page).to have_content(Order.first.purchaser_name)
-    expect(page).to have_content(Order.first.service_address)
+    expect(page).to have_content(Order.first.original_purchaser)
+    expect(page).to have_content(Order.first.original_address)
   end
 
   feature 'and looks at each item' do
@@ -38,9 +38,9 @@ feature 'When an admin visits an order page' do
       expect(page).to have_link(Item.last.title, href: item_path(Item.last))
     end
 
-    scenario 'they see the unit price' do
-      expect(page).to have_content(OrderItem.first.unit_cost)
-      expect(page).to have_content(OrderItem.last.unit_cost)
+    scenario 'they see the unit unit_price' do
+      expect(page).to have_content(OrderItem.first.original_unit_price)
+      expect(page).to have_content(OrderItem.last.original_unit_price)
     end
 
     scenario 'they see the quantity' do

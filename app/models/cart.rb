@@ -27,7 +27,7 @@ class Cart
   end
 
   def total_price
-    cart_items.sum  {|item, quantity| item.price * quantity}
+    cart_items.sum  {|item, quantity| item.unit_price * quantity}
   end
 
   def update_quantity(id, new_quantity)

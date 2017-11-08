@@ -20,7 +20,7 @@ feature 'When an admin clicks edit for an item' do
     background do
       fill_in 'item[title]', with: 'something unique'
       fill_in 'item[description]', with: 'something descriptive'
-      fill_in 'item[price]', with: '79.99'
+      fill_in 'item[unit_price]', with: '79.99'
       click_on 'Update Item'
     end
 

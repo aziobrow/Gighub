@@ -45,11 +45,11 @@ private
     raw_params = params.require(:item).permit(
       :title,
       :description,
-      :price,
+      :unit_price,
       :category_id,
       :image_url
     )
-    raw_params[:price] = (raw_params[:price].to_f * 100).round
+    raw_params[:unit_price] = (raw_params[:unit_price].to_f * 100).round
     raw_params
   end
 

@@ -11,7 +11,7 @@ feature 'When an admin creates an item' do
     visit new_admin_item_path
     fill_in 'item[title]', with: 'something unique'
     fill_in 'item[description]', with: 'something descriptive'
-    fill_in 'item[price]', with: '9.99'
+    fill_in 'item[unit_price]', with: '9.99'
     select 'Things', from: 'item[category_id]'
   end
 

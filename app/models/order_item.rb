@@ -1,20 +1,20 @@
 class OrderItem < ApplicationRecord
 
-  validates_presence_of :unit_cost
+  validates_presence_of :original_unit_price
   validates :quantity, presence: true, :numericality => { :greater_than_or_equal_to => 0 }
 
   belongs_to :order
   belongs_to :item
-  before_validation :save_unit_cost
+  before_validation :save_original_unit_price
 
   def subtotal
-    unit_cost * quantity
+    original_unit_price * quantity
   end
 
 private
 
-  def save_unit_cost
-    self.unit_cost ||= item && item.price
+  def save_original_unit_price
+    self.original_unit_price ||= item && item.unit_price
   end
 
 end

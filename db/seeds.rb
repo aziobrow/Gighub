@@ -25,13 +25,13 @@ Item.create!([{
   title: "Build a Website",
   description: "I'll make you a cool website!",
   category: Category.first,
-  price: 1099,
+  unit_price: 1099,
   image_url: "http://www.makeawebsiteguru.com/wp-content/uploads/2015/04/ways-to-build-a-website.png"
 },{
   title: "Plumbing",
   description: "I'll unclog your sink!",
   category: Category.last,
-  price: 15000,
+  unit_price: 15000,
   image_url: "https://www.homedepot.com/hdus/en_US/DTCCOMNEW/fetch/Category_Pages/Kitchen/Sinks/bar-prep-sink-400x400-2.png",
   active: false
 }])
