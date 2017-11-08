@@ -9,8 +9,9 @@ describe "as an authenticated user" do
 
   it "they cannot view another user's order show page" do
     order = create(:order, user: @user2)
-
-    expect{ visit order_path(order) }.to raise_error(ActionController::RoutingError)
+    visit order_path(order)
+    
+    expect(page.status_code).to eq(404)
   end
 
   it "they cannot visit an admin order show page" do

@@ -19,9 +19,9 @@ feature 'The past order show page' do
     end
 
     scenario 'halts with 404 if user is not the purchaser' do
-      expect{ visit order_path(create(:order)) }.to raise_error(
-        ActiveRecord::RecordNotFound
-      )
+      visit order_path(create(:order))
+
+      expect(page.status_code).to eq(404)
     end
 
     context 'who is the purchaser' do
@@ -65,6 +65,7 @@ feature 'The past order show page' do
 
       scenario 'displays the date/time that the order was submitted' do
         expect(page).to have_content("Ordered: #{@order.created_at.strftime("%m/%d/%Y")}")
+        save_and_open_page
       end
 
       scenario 'displays the date/time completed if completed' do
