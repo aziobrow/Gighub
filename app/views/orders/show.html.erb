@@ -1,5 +1,6 @@
 <h2>Your Order</h2>
 
+<p>Current Status: <%= @order.status.capitalize %></p>
 <p>Ordered: <%= @order.created_at %></p>
 <% unless @order.ordered? %>
   <p><%= @order.status.capitalize %>: <%= @order.updated_at %></p>
