@@ -23,7 +23,7 @@
 <% end %></div>
 
 <% if logged_in? %>
-  <%= button_to "Checkout", orders_path %>
+  <%= button_to "Checkout", orders_path(order_created: true) %>
 <% else %>
   <%= link_to "Login or Create Account to Checkout",  login_path %>
 <% end %>
