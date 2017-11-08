@@ -10,6 +10,7 @@
       <ul class="nav navbar-nav">
         <% if admin_logged_in? %>
           <li> <%= link_to "All Services", admin_items_path %> </li>
+          <li> <%= link_to "Add New Service", new_admin_item_path %> </li>
         <% else %>
           <li> <%= link_to "All Services", items_path %> </li>
         <% end %>
