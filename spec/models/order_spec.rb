@@ -28,9 +28,6 @@ describe Order do
     it 'status to "ordered"' do
       expect(@order.ordered?).to be true
     end
-    xit 'purchaser name to the user\'s username' do
-      expect(@order.original_purchaser).to eq(@order.user.username)
-    end
   end
 
   describe 'is associated with' do
