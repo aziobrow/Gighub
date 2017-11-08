@@ -34,17 +34,21 @@ feature 'The past orders page' do
         visit orders_path
       end
 
-      scenario 'displays each item title' do
-        expect(page).to have_content(@item1.title)
-                    .and have_content(@item2.title)
+      scenario 'they see a link to their order' do
+        expect(page).to have_link("Order ##{@order.id}")
       end
 
-      scenario 'has a link to each item page' do
-        expect(page).to have_link(href: item_path(@item1))
-                    .and have_link(href: item_path(@item2))
+      scenario "they can click the link to see order details" do
+        click_on("Order ##{@order.id}")
+
+        expect(current_path).to_eq(order_path(@order))
+        expect(page).to have_content("Quantity: 1")
+        expect(page).to have_content("Subtotal: $#{@order.unit_price}")
+        expect(page).to have_link("#{@item1.name}")
+        expect(page).to have_content("Current Status: #{@order.status}")
       end
 
-      scenario('displays the total unit_price of the order') do
+      scenario('displays the total price of the order') do
         expect(page).to have_content('Total Cost: $%.2f' % (@order.total_cost / 100.0))
       end
 
