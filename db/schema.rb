@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20171107224216) do
     t.text "description", null: false
     t.bigint "category_id"
     t.boolean "active", default: true, null: false
-    t.integer "units", default: 2, null: false
+    t.integer "units", default: 1, null: false
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["title"], name: "index_items_on_title", unique: true
   end
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20171107224216) do
     t.bigint "item_id"
     t.integer "original_unit_price", null: false
     t.integer "quantity", null: false
-    t.integer "units", default: 2, null: false
+    t.integer "units", default: 1, null: false
     t.index ["item_id"], name: "index_order_items_on_item_id"
     t.index ["order_id"], name: "index_order_items_on_order_id"
   end
