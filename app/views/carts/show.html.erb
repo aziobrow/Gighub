@@ -1,29 +1,37 @@
-<h2> Your Cart </h2>
+<h1> Your Cart </h1>
 
 <div class='cart-items'>
 <% if @items.empty? %>
   No items yet! Choose a service to get started!
 <% else %>
-  <% @items.each do |item, quantity| %>
-    Item: <%= item.title %>
-    <%= form_tag(cart_path, method: :put) do %>
-      <%= label_tag("Quantity") %>
-      <%= number_field_tag("quantity", "#{quantity}") %>
-      <%= hidden_field_tag :item_id, item.id %>
-      <%= submit_tag("Update Quantity") %>
+  <ul class="list-group">
+    <li class="list-gorup-item">
+    <% @items.each do |item, quantity| %>
+      <%= image_tag(item.image_url, size: "100x100", alt: item.title) %>
+      <br />
+      <h2> Item: <%= link_to "#{item.title}", item_path(item) %> </h2>
+      <h3> Description: <%= item.description %> </h3>
+      <h4> Item Price: <%= in_dollars(item.unit_price) %> </h4>
+      <%= form_tag(cart_path, method: :put) do %>
+        <h4> <%= label_tag("Quantity") %> </h4>
+        <%= number_field_tag("quantity", "#{quantity}") %>
+        <%= hidden_field_tag :item_id, item.id %>
+        <br />
+        <br />
+        <%= submit_tag("Update Quantity", class: "btn btn-primary") %>
+      <% end %>
+      <h4> Item Subtotal: <%= in_dollars(item.subtotal(quantity)) %> </h4>
+      <%= link_to "Remove Item", cart_path(item_id: item.id), method: :delete, class: "btn btn-danger" %>
     <% end %>
-    Description: <%= item.description %>
-    unit_price: <%= in_dollars(item.unit_price) %>
-    Item Subtotal: <%= in_dollars(item.subtotal(quantity)) %>
-    <%= image_tag(item.image_url, size: "100x100", alt: item.title) %>
-    <%= link_to "Remove", cart_path(item_id: item.id), method: :delete %>
-  <% end %>
+    </li>
+  </ul>
 
-  Total Before Tax: $<%= @cart.total_price %>
-<% end %></div>
+  <h4> Total Before Tax: <%= in_dollars(@cart.total_price) %> </h4>
+<% end %>
+</div>
 
 <% if logged_in? %>
-  <%= button_to "Checkout", orders_path(order_created: true) %>
+  <%= button_to "Checkout", orders_path(order_created: true), class: "btn btn-success" %>
 <% else %>
-  <%= link_to "Login or Create Account to Checkout",  login_path %>
+  <%= link_to "Login or Create Account to Checkout",  login_path, class: "btn btn-success" %>
 <% end %>
