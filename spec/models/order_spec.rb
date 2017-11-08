@@ -17,8 +17,6 @@ describe Order do
       order = Order.new(user: create(:user), original_address: '1234 Fake St.')
       expect(order).to be_valid
     end
-
-
   end
 
   describe 'defaults' do
@@ -42,7 +40,6 @@ describe Order do
       @order.order_items << create(:order_item)
       expect(@order.order_items.first).to be_a OrderItem
     end
-
   end
 
   describe 'instance methods' do
