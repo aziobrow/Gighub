@@ -1,7 +1,7 @@
 <li class="list-group-item">
   <h4>Item: <%= link_to order_item.item.title, item_path(order_item.item) %></h4>
   <h4>Quantity: <%= order_item.quantity %></h4>
-  <h4>Unit: <%= order_item.original_unit %></h4>
+  <h4>Unit: <%= order_item.format_unit %></h4>
   <h4>Unit Cost: <%= in_dollars(order_item.original_unit_price) %></h4>
   <h4><strong>Subtotal: <%= in_dollars(order_item.subtotal) %></strong></h4>
 </li>
