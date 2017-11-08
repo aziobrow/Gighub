@@ -3,7 +3,7 @@
 <% if @orders.empty? %>
   <p>You haven't made any orders.</p>
 <% else %>
-  <table>
+  <table id='order-table'>
     <th> Order Number </th>
     <th> Date Ordered </th>
     <% @orders.each do |order| %>
