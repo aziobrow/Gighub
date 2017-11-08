@@ -7,4 +7,20 @@ class Admin::UsersController < ApplicationController
     @orders = Order.parse_params(params)
   end
 
+  def edit
+    @user = User.find(current_user.id)
+  end
+
+  def update
+    @user = User.update(current_user.id, admin_user_params)
+    flash[:success] = "Profile Successfully Updated"
+    redirect_to admin_dashboard_path
+  end
+
+  private
+
+  def admin_user_params
+    params.require(:user).permit(:username, :email, :name, :address)
+  end
+
 end
