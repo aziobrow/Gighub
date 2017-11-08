@@ -23,10 +23,10 @@ feature 'the cart page' do
     end
 
     scenario 'the user sees the placed order in a table' do
-      expect(page).to have_css 'order-table'
-      within 'order-table' do
+      expect(page).to have_css '#order-table'
+      within '#order-table' do
         expect(page).to have_text "Order ##{Order.last.id}"
-        expect(page).to have_text "Order ##{Order.last.created_at.strftime("%m/%d/%Y")}"
+        expect(page).to have_text "#{Order.last.created_at.strftime("%m/%d/%Y")}"
       end
     end
 
