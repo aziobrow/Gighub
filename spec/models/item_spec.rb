@@ -77,6 +77,10 @@ describe Item do
     it 'active to true' do
       expect(Item.new.active).to be true
     end
+
+    it 'units to be hourly' do
+      expect(Item.new.hourly?).to be true
+    end
   end
 
   describe 'is associated with' do

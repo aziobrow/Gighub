@@ -13,12 +13,16 @@ Category.create!([{
 User.create!([{
   username: "user",
   password: "1234",
-  email: "aziobrow@gmail.com"
+  email: "aziobrow@gmail.com",
+  name: "Aurora Doe",
+  address: "123 Fake St. Denver, CO 80226"
 },{
   username: "admin",
   password: "1234",
   email: "anna@gmail.com",
-  role: :admin
+  role: :admin,
+  name: "Anna Doe",
+  address: "456 Fake St. Denver, CO 80202"
 }])
 
 Item.create!([{
@@ -33,25 +37,36 @@ Item.create!([{
   category: Category.last,
   unit_price: 15000,
   image_url: "https://www.homedepot.com/hdus/en_US/DTCCOMNEW/fetch/Category_Pages/Kitchen/Sinks/bar-prep-sink-400x400-2.png",
-  active: false
+  active: false,
+  unit: 0
 }])
 
 Order.create!([{
-  user: User.default.first
+  user: User.default.first,
+  original_address: User.default.first.address,
+  original_purchaser: User.default.first.name
 },{
-  user: User.default.first
+  user: User.default.first,
+  original_address: User.default.first.address,
+  original_purchaser: User.default.first.name
 }])
 
 OrderItem.create!([{
   order: Order.first,
   item: Item.first,
-  quantity: 2
+  quantity: 2,
+  original_unit_price: Item.first.unit_price,
+  original_unit: Item.first.unit
 },{
   order: Order.first,
   item: Item.last,
-  quantity: 1
+  quantity: 1,
+  original_unit_price: Item.last.unit_price,
+  original_unit: Item.last.unit
 },{
   order: Order.last,
   item: Item.first,
-  quantity: 3
+  quantity: 3,
+  original_unit_price: Item.first.unit_price,
+  original_unit: Item.first.unit
 }])

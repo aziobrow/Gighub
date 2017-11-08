@@ -7,6 +7,8 @@ class Item < ApplicationRecord
   belongs_to :category
   has_many :order_items
 
+  enum unit: ['fifteen_min', 'hourly', 'daily', 'flat_rate']
+
   def subtotal(quantity)
     self.unit_price * quantity
   end
