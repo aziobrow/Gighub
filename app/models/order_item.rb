@@ -13,6 +13,18 @@ class OrderItem < ApplicationRecord
     original_unit_price * quantity
   end
 
+  def format_unit
+    if fifteen_min?
+      "Per 15 Minutes"
+    elsif hourly?
+      "Per Hour"
+    elsif daily?
+      "Per Day"
+    elsif flat_rate?
+      "Flat Rate"
+    end
+  end
+
 private
 
   def save_original_unit_price

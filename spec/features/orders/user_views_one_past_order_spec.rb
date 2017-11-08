@@ -64,7 +64,7 @@ feature 'The past order show page' do
       end
 
       scenario 'displays the date/time that the order was submitted' do
-        expect(page).to have_content("Ordered: #{@order.created_at}")
+        expect(page).to have_content("Ordered: #{@order.created_at.strftime("%m/%d/%Y")}")
       end
 
       scenario 'displays the date/time completed if completed' do

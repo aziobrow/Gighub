@@ -3,13 +3,15 @@
 <% if @orders.empty? %>
   <p>You haven't made any orders.</p>
 <% else %>
-  <table id='order-table'>
-    <th> Order Number </th>
-    <th> Date Ordered </th>
+  <table id='order-table' class="table table-striped">
+    <td class="table-header"> Order Number </td>
+    <td class="table-header"> Date Ordered </td>
+    <td class="table-header"> Order Status </td>
     <% @orders.each do |order| %>
       <tr>
         <td><%= link_to "Order ##{order.id}", order_path(order) %></td>
         <td><%= order.created_at.strftime("%m/%d/%Y") %></td>
+        <td><%= order.status %></td>
       </tr>
     <% end %>
   </table>
