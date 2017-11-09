@@ -6,15 +6,15 @@
     <% if @order.original_address %>
       <h4>Service Adress: <%= @order.original_address %></h4>
     <% end %>
-    <h4>Time: <%= @order.format_created_time %></h4>
-    <h4>Status: <%= @order.status %></h4>
+    <h4>Order Placed: <%= @order.format_created_time %></h4>
+    <h4>Status: <%= @order.status.capitalize %></h4>
+    <b>Total Cost: <%= in_dollars(@order.total_cost) %></b>
   </div>
 </div>
 
 <ul>
-  <h2>Items</h2>
+  <h2>Services Ordered</h2>
   <ul class="list-group">
     <%= render @order.order_items %>
   </ul>
-  <b>Total Cost: <%= in_dollars(@order.total_cost) %></b>
 </ul>

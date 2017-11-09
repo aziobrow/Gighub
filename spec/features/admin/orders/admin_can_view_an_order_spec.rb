@@ -19,7 +19,7 @@ feature 'When an admin visits an order page' do
   end
 
   scenario 'they see the order status' do
-    expect(page).to have_content(Order.first.status)
+    expect(page).to have_content(Order.first.status.titleize)
   end
 
   scenario 'they see the total cost' do

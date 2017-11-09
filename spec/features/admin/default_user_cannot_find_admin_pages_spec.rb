@@ -10,22 +10,23 @@ feature 'When an default user visits an admin page' do
 
   describe 'for an order' do
     scenario 'they get the 404 page' do
-      expect{ visit admin_order_path(create(:order)) }
-      .to raise_error(ActionController::RoutingError)
+      visit admin_order_path(create(:order))
+
+      expect(page.status_code).to eq(404)
     end
   end
 
   describe 'for an admin dashboard' do
     scenario 'they get the 404 page' do
-      expect{ visit admin_order_path(create(:order)) }
-      .to raise_error(ActionController::RoutingError)
+      visit admin_order_path(create(:order))
+      expect(page.status_code).to eq(404)
     end
   end
 
   describe 'for an admin edit page' do
     scenario 'they get the 404 page' do
-      expect{ visit admin_order_path(create(:order)) }
-      .to raise_error(ActionController::RoutingError)
+      visit admin_order_path(create(:order))
+      expect(page.status_code).to eq(404)
     end
   end
 

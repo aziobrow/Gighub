@@ -1,8 +1,20 @@
-<li class="list-group-item">
-  <%= image_tag(item.image_url, size: "100", alt: item.title, class: "card-img-top") %>
-  <br />
-  <h3> <%= link_to "#{item.title}", item_path(item) %> </h3>
-  <% if item.retired? %><em>RETIRED</em><% end %>
-  <p><%= item.description %></p>
-  <%= link_to "Edit", edit_admin_item_path(item) %>
-</li>
+<table id='order-table' class="table table-striped">
+  <td class="table-header"> Image </td>
+  <td class="table-header"> Service </td>
+  <td class="table-header"> Description </td>
+  <td class="table-header"> Order Status </td>
+  <td class="table-header"> Actions </td>
+    <tr>
+      <td><%= image_tag(item.image_url, size: "100", alt: item.title, class: "card-img-top") %></td>
+      <td><%= link_to "#{item.title}", item_path(item) %></td>
+      <td><%= item.description %></td>
+      <td>
+        <% if item.retired? %>
+          <em>RETIRED</em>
+        <% else %>
+          ACTIVE
+        <% end %>
+      </td>
+      <td><%= link_to "Edit", edit_admin_item_path(item) %></td>
+    </tr>
+</table>
