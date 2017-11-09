@@ -23,12 +23,16 @@ In order to spin-up the server, run: `rails s`
 If data is seeded, the following credentials are available:
 
   Default User:
-    * username: user
-    * password: 1234
+  
+    *username: user
+    
+    *password: 1234
     
   Admin User:
-    * username: user
-    * password: 1234
+  
+    *username: user
+    
+    *password: 1234
 
 ## Testing
 [Rspec-Rails](https://github.com/rspec/rspec-rails) is used for testing with [Capybara](https://github.com/teamcapybara/capybara) for feature tests. 
