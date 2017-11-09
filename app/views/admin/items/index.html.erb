@@ -1,3 +1,11 @@
-<h2>All Items</h2>
+<h1 class="alignment">All Services</h1>
 
-<%= render @items %>
+<table id='order-table' class="table table-striped">
+  <td class="table-header"> Image </td>
+  <td class="table-header"> Service </td>
+  <td class="table-header"> Description </td>
+  <td class="table-header"> Order Status </td>
+  <td class="table-header"> Actions </td>
+
+  <%= render @items %>
+</table>
