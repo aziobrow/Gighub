@@ -4,7 +4,8 @@
     <br />
     <h2> <%= @item.title %> </h2>
     <h4> <% if @item.retired? %><em>RETIRED</em><% end %> </h4>
-    <h3>unit_price: <%= in_dollars(@item.unit_price) %></h3>
+    <h3>Unit: <%= @item.unit.titleize %></h3>
+    <h3>Price per Unit: <%= in_dollars(@item.unit_price) %></h3>
     <h3>Description: <%= @item.description %></h3>
     <h3>Category: <%= @item.category.name %></h3>
     <%= render 'add_to_cart_button', item: @item %>

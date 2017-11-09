@@ -1,5 +1,5 @@
 <li class="order-item listing">
-  <p>Item: <%= link_to order_item.item.title, item_path(order_item.item) %></p>
+  <p>Service: <%= link_to order_item.item.title, item_path(order_item.item) %></p>
   <p>Quantity: <%= order_item.quantity %></p>
   <p>Unit: <%= order_item.original_unit.titleize %>
   <p>Unit Cost: <%= in_dollars(order_item.original_unit_price) %></p>
