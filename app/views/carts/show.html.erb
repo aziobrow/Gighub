@@ -5,8 +5,8 @@
   No services selected yet! Choose a service to get started!
 <% else %>
   <ul class="list-group">
-    <li class="list-gorup-item">
     <% @items.each do |item, quantity| %>
+    <li class="list-group-item">
       <%= image_tag(item.image_url, size: "100x100", alt: item.title) %>
       <br />
       <h2> Service: <%= link_to "#{item.title}", item_path(item) %> </h2>
@@ -23,8 +23,10 @@
       <% end %>
       <h4> Item Subtotal: <%= in_dollars(item.subtotal(quantity)) %> </h4>
       <%= link_to "Remove Item", cart_path(item_id: item.id), method: :delete, class: "btn btn-danger" %>
+      <br />
+      <br />
+      </li>
     <% end %>
-    </li>
   </ul>
 
   <h4> Total Before Tax: <%= in_dollars(@cart.total_price) %> </h4><br>
