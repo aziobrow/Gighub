@@ -3,7 +3,7 @@ class Order < ApplicationRecord
   belongs_to :user
   has_many :order_items
 
-  validates_presence_of :original_purchaser, :status
+  validates_presence_of :original_purchaser, :original_address, :status
   validates_associated :order_items
   before_validation :save_original_purchaser, :save_original_address
 
