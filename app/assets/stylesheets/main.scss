@@ -1,6 +1,24 @@
+body {
+  background-color: WhiteSmoke;
+}
+
 main {
   text-align: center;
   ul {
     list-style-type: none;
   }
+}
+
+.admin-drop {
+  width: 100%;
+}
+
+.breakdown-box {
+  display: flex;
+  justify-content: center;
+}
+
+.order-breakdown {
+  width: 30%;
+  border: dashed medium Grey;
 }

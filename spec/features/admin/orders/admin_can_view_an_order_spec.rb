@@ -15,11 +15,11 @@ feature 'When an admin visits an order page' do
   end
 
   scenario 'they can see the order\'s date and time' do
-    expect(page).to have_content(Order.first.created_at)
+    expect(page).to have_content(Order.first.format_created_time)
   end
 
   scenario 'they see the order status' do
-    expect(page).to have_content(Order.first.status)
+    expect(page).to have_content(Order.first.status.titleize)
   end
 
   scenario 'they see the total cost' do

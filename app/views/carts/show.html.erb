@@ -2,16 +2,17 @@
 
 <div class='cart-items'>
 <% if @items.empty? %>
-  No items yet! Choose a service to get started!
+  No services selected yet! Choose a service to get started!
 <% else %>
   <ul class="list-group">
-    <li class="list-gorup-item">
     <% @items.each do |item, quantity| %>
+    <li class="list-group-item">
       <%= image_tag(item.image_url, size: "100x100", alt: item.title) %>
       <br />
-      <h2> Item: <%= link_to "#{item.title}", item_path(item) %> </h2>
+      <h2> Service: <%= link_to "#{item.title}", item_path(item) %> </h2>
       <h3> Description: <%= item.description %> </h3>
-      <h4> Item Price: <%= in_dollars(item.unit_price) %> </h4>
+      <h4> Unit: <%= item.unit.titleize %> </h4>
+      <h4> Unit Price: <%= in_dollars(item.unit_price) %> </h4>
       <%= form_tag(cart_path, method: :put) do %>
         <h4> <%= label_tag("Quantity") %> </h4>
         <%= number_field_tag("quantity", "#{quantity}") %>
@@ -22,16 +23,17 @@
       <% end %>
       <h4> Item Subtotal: <%= in_dollars(item.subtotal(quantity)) %> </h4>
       <%= link_to "Remove Item", cart_path(item_id: item.id), method: :delete, class: "btn btn-danger" %>
+      <br />
+      <br />
+      </li>
     <% end %>
-    </li>
   </ul>
 
-  <h4> Total Before Tax: <%= in_dollars(@cart.total_price) %> </h4>
+  <h4> Total Before Tax: <%= in_dollars(@cart.total_price) %> </h4><br>
+  <% if logged_in? %>
+  <%= button_to "Checkout", orders_path(order_created: true), class: "btn btn-success" %>
+  <% else %>
+  <%= link_to "Login or Create Account to Checkout",  login_path, class: "btn btn-success" %>
+  <% end %>
 <% end %>
 </div>
-
-<% if logged_in? %>
-  <%= button_to "Checkout", orders_path(order_created: true), class: "btn btn-success" %>
-<% else %>
-  <%= link_to "Login or Create Account to Checkout",  login_path, class: "btn btn-success" %>
-<% end %>

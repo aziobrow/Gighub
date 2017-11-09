@@ -1,10 +1,10 @@
-<li class="order listing">
-  <%= link_to "Order ##{order.id}", admin_order_path(order) %>
+<li class="order listing list-group-item" >
+  <h3> <%= link_to "Order ##{order.id}", admin_order_path(order) %> </h3>
   <% if order.ordered? %>
-    <div class='cancel-link'><%= link_to "Cancel",  order_path(id: order.id, status: "cancelled"), method: :patch %></div>
-    <div class='paid-link'><%= link_to "Mark as Paid", order_path(id: order.id, status: "paid"), method: :patch %></div>
+    <h4 class='cancel-link'><%= link_to "Cancel",  order_path(id: order.id, status: "cancelled"), method: :patch, class: 'btn btn-md btn-danger' %></h4>
+    <h4 class='paid-link'><%= link_to "Mark as Paid", order_path(id: order.id, status: "paid"), method: :patch, class: 'btn btn-md btn-info'%></h4>
   <% elsif order.paid? %>
-    <div class='cancel-link'><%= link_to "Cancel", order_path(id: order.id, status: "cancelled"), method: :patch %></div>
-    <div class='completed-link'><%= link_to "Mark as Completed", order_path(id: order.id, status: "completed"), method: :patch %></div>
+    <h4 class='cancel-link'><%= link_to "Cancel", order_path(id: order.id, status: "cancelled"), method: :patch, class: 'btn btn-md btn-danger' %></h4>
+    <h4 class='completed-link'><%= link_to "Mark as Completed", order_path(id: order.id, status: "completed"), method: :patch, class: 'btn btn-md btn-success'%></h4>
   <% end %>
 </li>

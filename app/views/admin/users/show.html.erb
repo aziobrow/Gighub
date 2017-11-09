@@ -1,28 +1,35 @@
 <h1>Admin Dashboard</h1>
 
-<%= link_to "Update Profile Information", admin_edit_path %>
-
-<h3> Order Breakdown </h3>
-<h5> <%= "Ordered (#{@all_orders.ordered.count})" %></h5>
-<h5> <%= "Paid (#{@all_orders.paid.count})" %> </h5>
-<h5> <%= "Cancelled (#{@all_orders.cancelled.count})" %> </h5>
-<h5> <%= "Completed (#{@all_orders.completed.count})" %> </h5>
-
-<h3> Orders </h3>
-<div class="dropdown">
-  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-    Filter By Status
-    <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" aria-labelledby="statusDropdown">
-    <li><%= link_to "All", admin_dashboard_path %></li>
-    <li><%= link_to "Ordered", admin_dashboard_path(status: "ordered") %></li>
-    <li><%= link_to "Paid", admin_dashboard_path(status: "paid") %></li>
-    <li><%= link_to "Completed", admin_dashboard_path(status: "completed") %></li>
-    <li><%= link_to "Cancelled", admin_dashboard_path(status: "cancelled") %></li>
-  </ul>
+<%= link_to "Update Profile Information", admin_edit_path, class: 'btn btn-md btn-success' %>
+<br />
+<br />
+<div class="breakdown-box">
+  <div class="order-breakdown">
+    <h3> Order Breakdown </h3>
+    <h4> <%= "Ordered (#{@all_orders.ordered.count})" %></h4>
+    <h4> <%= "Paid (#{@all_orders.paid.count})" %> </h4>
+    <h4> <%= "Cancelled (#{@all_orders.cancelled.count})" %> </h4>
+    <h4> <%= "Completed (#{@all_orders.completed.count})" %> </h4>
+  </div>
 </div>
 
-<ul>
+<h2> Orders </h2>
+<div class="navbar nav">
+  <div class="dropdown">
+    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      <%= @status.titleize %>
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu admin-drop" aria-labelledby="statusDropdown">
+      <li><%= link_to "All", admin_dashboard_path %></li>
+      <li><%= link_to "Ordered", admin_dashboard_path(status: "ordered") %></li>
+      <li><%= link_to "Paid", admin_dashboard_path(status: "paid") %></li>
+      <li><%= link_to "Completed", admin_dashboard_path(status: "completed") %></li>
+      <li><%= link_to "Cancelled", admin_dashboard_path(status: "cancelled") %></li>
+    </ul>
+  </div>
+</div>
+
+<ul class="list-group">
   <%= render @orders %>
 </ul>

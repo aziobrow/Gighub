@@ -13,11 +13,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_admin
-    not_found unless admin_logged_in?
-  end
-
-  def not_found
-    raise ActionController::RoutingError.new('Not Found')
+    render_404 unless admin_logged_in?
   end
 
   def render_404

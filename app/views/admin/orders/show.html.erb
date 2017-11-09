@@ -1,14 +1,20 @@
-<h2>Order Details</h2>
+<h1>Order Details</h1>
 
-<p>Purchaser: <%= @order.original_purchaser %></p>
-<% if @order.original_address %>
-  <p>Service Adress: <%= @order.original_address %></p>
-<% end %>
-<p>Time: <%= @order.created_at %></p>
-<p>Status: <%= @order.status %></p>
+<div class="breakdown-box">
+  <div class="order-breakdown">
+    <h3>Purchaser Information</h3>
+    <h4>Name: <%= @order.original_purchaser %></h4>
+    <h4>Purchaser: <%= @order.original_purchaser %></h4>
+    <h4>Adress: <%= @order.original_address %></h4>
+    <h4>Order Placed: <%= @order.format_created_time %></h4>
+    <h4>Status: <%= @order.status.capitalize %></h4>
+    <h4><b>Total Cost: <%= in_dollars(@order.total_cost) %></b></h4>
+  </div>
+</div>
 
 <ul>
-  <h2>Items</h2>
-  <%= render @order.order_items %>
-  <b>Total Cost: <%= in_dollars(@order.total_cost) %></b>
+  <h2>Services Ordered</h2>
+  <ul class="list-group">
+    <%= render @order.order_items %>
+  </ul>
 </ul>

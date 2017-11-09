@@ -3,9 +3,9 @@ class Order < ApplicationRecord
   belongs_to :user
   has_many :order_items
 
-  validates_presence_of :original_purchaser, :status
+  validates_presence_of :original_purchaser, :original_address, :status
   validates_associated :order_items
-  before_validation :save_original_purchaser
+  before_validation :save_original_purchaser, :save_original_address
 
 
   enum status: ['ordered', 'paid', 'cancelled', 'completed']
@@ -19,17 +19,29 @@ class Order < ApplicationRecord
   end
 
   def format_created_time
-    created_at.strftime("%m/%d/%Y at %I:%M %p")
+    created_at.strftime("%m/%d/%Y at %l:%M %p")
   end
 
   def format_updated_time
-    updated_at.strftime("%m/%d/%Y at %I:%M %p")
+    updated_at.strftime("%m/%d/%Y at %i:%M %p")
   end
 
 private
 
   def save_original_purchaser
-    self.original_purchaser ||= user && user.username
+    self.original_purchaser ||= user && user.name
+  end
+
+  def save_original_address
+    self.original_address ||= user && user.address
+  end
+
+  def self.retrieve_status(params)
+    if params[:status]
+      params[:status]
+    else
+      "All"
+    end
   end
 
   def self.parse_params(params)
