@@ -36,6 +36,14 @@ private
     self.original_address ||= user && user.address
   end
 
+  def self.retrieve_status(params)
+    if params[:status]
+      params[:status]
+    else
+      "All"
+    end
+  end
+
   def self.parse_params(params)
   if params[:status]
     where(status: params[:status])
