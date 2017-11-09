@@ -6,7 +6,7 @@
     <% if @order.original_address %>
       <h4>Service Adress: <%= @order.original_address %></h4>
     <% end %>
-    <h4>Time: <%= @order.created_at %></h4>
+    <h4>Time: <%= @order.format_created_time %></h4>
     <h4>Status: <%= @order.status %></h4>
   </div>
 </div>
