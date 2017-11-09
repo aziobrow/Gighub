@@ -19,11 +19,11 @@ class Order < ApplicationRecord
   end
 
   def format_created_time
-    created_at.strftime("%m/%d/%Y at %I:%M %p")
+    created_at.strftime("%m/%d/%Y at %l:%M %p")
   end
 
   def format_updated_time
-    updated_at.strftime("%m/%d/%Y at %I:%M %p")
+    updated_at.strftime("%m/%d/%Y at %i:%M %p")
   end
 
 private

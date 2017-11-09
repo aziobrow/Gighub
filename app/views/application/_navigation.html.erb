@@ -15,6 +15,7 @@
           <li> <%= link_to "All Services", items_path %> </li>
         <% end %>
 
+        <% unless admin_logged_in? %>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Shop By Category <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -23,6 +24,7 @@
             <% end %>
           </ul>
         </li>
+        <% end %>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
