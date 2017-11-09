@@ -13,11 +13,11 @@
   </div>
 </div>
 
-<h2> All Orders </h2>
+<h2> Orders </h2>
 <div class="navbar nav">
   <div class="dropdown">
     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-      Filter By Status
+      <%= @status.titleize %>
       <span class="caret"></span>
     </button>
     <ul class="dropdown-menu admin-drop" aria-labelledby="statusDropdown">

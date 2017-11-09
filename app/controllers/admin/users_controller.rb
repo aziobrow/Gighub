@@ -5,6 +5,7 @@ class Admin::UsersController < ApplicationController
   def show
     @all_orders = Order.all
     @orders = Order.parse_params(params)
+    @status = Order.retrieve_status(params)
   end
 
   def edit

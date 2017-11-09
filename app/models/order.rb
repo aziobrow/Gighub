@@ -32,6 +32,14 @@ private
     self.original_purchaser ||= user && user.username
   end
 
+  def self.retrieve_status(params)
+    if params[:status]
+      params[:status]
+    else
+      "All"
+    end
+  end
+
   def self.parse_params(params)
   if params[:status]
     where(status: params[:status])
