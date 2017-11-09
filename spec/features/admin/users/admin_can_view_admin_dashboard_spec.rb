@@ -13,12 +13,15 @@ feature 'When I visit /admin/dashboard' do
   scenario 'as a logged in user, they get a 404' do
     user = create(:user, username: 'JaneDoe89', password: 'pw', email: 'janedoe89@example.com')
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    visit '/admin/dashboard'
 
-    expect{ visit '/admin/dashboard' }.to raise_error(ActionController::RoutingError)
+    expect(page.status_code).to eq(404)
   end
 
   scenario 'as a visitor, they get a 404' do
-    expect{ visit '/admin/dashboard' }.to raise_error(ActionController::RoutingError)
+    visit '/admin/dashboard'
+
+    expect(page.status_code).to eq(404)
   end
 
 end

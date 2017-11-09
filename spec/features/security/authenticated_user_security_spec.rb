@@ -10,17 +10,20 @@ describe "as an authenticated user" do
   it "they cannot view another user's order show page" do
     order = create(:order, user: @user2)
     visit order_path(order)
-    
+
     expect(page.status_code).to eq(404)
   end
 
   it "they cannot visit an admin order show page" do
     order = create(:order)
+    visit admin_order_path(order)
 
-    expect{ visit admin_order_path(order) }.to raise_error(ActionController::RoutingError)
+    expect(page.status_code).to eq(404)
   end
 
   it "they cannot visit an admin dashboard" do
-    expect{ visit admin_dashboard_path }.to raise_error(ActionController::RoutingError)
+    visit admin_dashboard_path
+
+    expect(page.status_code).to eq(404)
   end
 end
