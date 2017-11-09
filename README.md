@@ -49,6 +49,6 @@ In order to run tests, perform the following:
 
 ## Contributers
 
-Anna Lewis (@anlewi5)
-Aurora Ziobrowski (@aziobrow)
+Anna Lewis (@anlewi5), 
+Aurora Ziobrowski (@aziobrow), 
 Josi McClellan (@JosiMcClellan)
