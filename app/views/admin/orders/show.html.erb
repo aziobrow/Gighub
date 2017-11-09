@@ -8,7 +8,7 @@
     <% end %>
     <h4>Order Placed: <%= @order.format_created_time %></h4>
     <h4>Status: <%= @order.status.capitalize %></h4>
-    <b>Total Cost: <%= in_dollars(@order.total_cost) %></b>
+    <h4><b>Total Cost: <%= in_dollars(@order.total_cost) %></b></h4>
   </div>
 </div>
 
