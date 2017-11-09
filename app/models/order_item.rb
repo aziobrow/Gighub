@@ -5,7 +5,7 @@ class OrderItem < ApplicationRecord
 
   belongs_to :order
   belongs_to :item
-  before_validation :save_original_unit_price
+  before_validation :save_original_unit_price, :save_quantity, :save_original_unit
 
   enum original_unit: ['fifteen_min', 'hourly', 'daily', 'flat_rate']
 
@@ -29,6 +29,14 @@ private
 
   def save_original_unit_price
     self.original_unit_price ||= item && item.unit_price
+  end
+
+  def save_quantity
+    self.quantity ||= item && item.quantity
+  end
+
+  def save_original_unit
+    self.original_unit ||= item && item.unit
   end
 
 end
