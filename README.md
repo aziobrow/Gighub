@@ -30,7 +30,7 @@ If data is seeded, the following credentials are available:
     
   Admin User:
   
-    *username: user
+    *username: admin
     
     *password: 1234
 
