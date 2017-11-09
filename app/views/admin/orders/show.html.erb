@@ -4,7 +4,7 @@
 <% if @order.original_address %>
   <p>Service Adress: <%= @order.original_address %></p>
 <% end %>
-<p>Order Placed: <%= @order.created_at.strftime("%m/%d/%Y at %I:%M %p") %></p>
+<p>Order Placed: <%= @order.format_created_time %></p>
 <p>Status: <%= @order.status.capitalize %></p>
 <b>Total Cost: <%= in_dollars(@order.total_cost) %></b>
 
