@@ -3,9 +3,9 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panal-title">Current Status: <%= @order.status.capitalize %></h3>
-    <h3 class="panal-heading">Ordered: <%= @order.created_at.strftime("%m/%d/%Y") %></h3>
+    <h3 class="panal-heading">Ordered: <%= @order.format_created_time %></h3>
     <% unless @order.ordered? %>
-      <h4><%= @order.status.capitalize %>: <%= @order.updated_at %></h4>
+      <h4><%= @order.status.capitalize %>: <%= @order.format_updated_time %></h4>
     <% end %>
   </div>
   <div class="panal-body">

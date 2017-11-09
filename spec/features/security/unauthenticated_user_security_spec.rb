@@ -2,9 +2,11 @@ require 'rails_helper'
 
 describe "as an unauthenticated user" do
 
-  xit "they cannot view a user's order show page" do
+  it "they cannot view a user's order show page" do
+    order = create(:order)
+    visit order_path(order)
 
-
+    expect(current_path).to eq(login_path)
   end
 
   it "they cannot visit an admin order show page" do
@@ -26,7 +28,7 @@ describe "as an unauthenticated user" do
     expect(current_path).to eq(cart_path)
 
     click_on("Login or Create Account to Checkout")
-    
+
     expect(current_path).to eq(login_path)
   end
 end

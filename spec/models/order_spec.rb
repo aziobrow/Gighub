@@ -17,8 +17,6 @@ describe Order do
       order = Order.new(user: create(:user), original_address: '1234 Fake St.')
       expect(order).to be_valid
     end
-
-
   end
 
   describe 'defaults' do
@@ -27,9 +25,6 @@ describe Order do
     end
     it 'status to "ordered"' do
       expect(@order.ordered?).to be true
-    end
-    xit 'purchaser name to the user\'s username' do
-      expect(@order.original_purchaser).to eq(@order.user.username)
     end
   end
 
@@ -45,7 +40,6 @@ describe Order do
       @order.order_items << create(:order_item)
       expect(@order.order_items.first).to be_a OrderItem
     end
-
   end
 
   describe 'instance methods' do
