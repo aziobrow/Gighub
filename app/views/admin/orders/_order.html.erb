@@ -1,4 +1,4 @@
-<li class="order listing list-group-item">
+<li class="order listing list-group-item" >
   <h3> <%= link_to "Order ##{order.id}", admin_order_path(order) %> </h3>
   <% if order.ordered? %>
     <h4 class='cancel-link'><%= link_to "Cancel",  order_path(id: order.id, status: "cancelled"), method: :patch, class: 'btn btn-md btn-danger' %></h4>
