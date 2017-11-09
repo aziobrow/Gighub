@@ -35,6 +35,7 @@ If data is seeded, the following credentials are available:
     *password: 1234
 
 ## Testing
+
 [Rspec-Rails](https://github.com/rspec/rspec-rails) is used for testing with [Capybara](https://github.com/teamcapybara/capybara) for feature tests. 
 [Factory_Bot](https://github.com/thoughtbot/factory_bot) is used to create test data.
 
@@ -45,3 +46,9 @@ In order to run tests, perform the following:
 `rspec`
 
 [Launchy](https://github.com/copiousfreetime/launchy) will allow you to run `save_and_open_page` in any feature test in order to view an unstyled instance of the specific page when rspec is run.
+
+## Contributers
+
+Anna Lewis (@anlewi5)
+Aurora Ziobrowski (@aziobrow)
+Josi McClellan (@JosiMcClellan)
