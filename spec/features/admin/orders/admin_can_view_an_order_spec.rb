@@ -15,7 +15,7 @@ feature 'When an admin visits an order page' do
   end
 
   scenario 'they can see the order\'s date and time' do
-    expect(page).to have_content(Order.first.created_at.strftime("%m/%d/%Y at %I:%M %p"))
+    expect(page).to have_content(Order.first.format_created_time)
   end
 
   scenario 'they see the order status' do
